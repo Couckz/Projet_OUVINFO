@@ -1,0 +1,1 @@
+"""contient la classe gérant les caractéristiques des ennemis"""
