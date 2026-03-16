@@ -32,6 +32,7 @@ class Gameconfig:
     def init():
         Gameconfig.BACKGROUND_LEVEL1 = pygame.image.load("Projet_OUVINFO/img_file/level1.jpeg")
         Gameconfig.WALK_RIGHT_IMG = [ 
+                                    pygame.image.load("Projet_OUVINFO/img_file/princesseright1.png").convert_alpha(),
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseright2.png').convert_alpha(),
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseright3.png').convert_alpha(),
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseright4.png').convert_alpha(),
@@ -40,6 +41,7 @@ class Gameconfig:
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseright7.png').convert_alpha()]
         
         Gameconfig.WALK_LEFT_IMG = [
+                                    pygame.image.load("Projet_OUVINFO/img_file/princesseleft1.png").convert_alpha(),
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseleft2.png').convert_alpha(),
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseleft3.png').convert_alpha(),
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseleft4.png').convert_alpha(),
