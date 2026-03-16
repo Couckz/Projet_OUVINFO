@@ -27,7 +27,7 @@ class Gameconfig:
     STANDING_IMG = []
     WALK_RIGHT_MASKS = [] 
     WALK_LEFT_MASKS = []
-    NB_FRAMES_PER_SPRITE_PLAYER = 2
+    NB_FRAMES_PER_SPRITE_PLAYER = 5
     
     def init():
         Gameconfig.BACKGROUND_LEVEL1 = pygame.image.load("../img_file/level1.jpeg")
@@ -51,7 +51,7 @@ class Gameconfig:
         
         
         Gameconfig.STANDING_IMG = [
-                                    pygame.image.load('../img_file/princesseright2.png').convert_alpha()]
+                                    pygame.image.load('../img_file/princesseright1.png').convert_alpha()]
         
         Gameconfig.WALK_RIGHT_MASKS = [] 
         Gameconfig.WALK_LEFT_MASKS = []
