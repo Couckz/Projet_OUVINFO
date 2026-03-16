@@ -30,10 +30,10 @@ class Gameconfig:
     NB_FRAMES_PER_SPRITE_PLAYER = 2
     
     def init():
-        Gameconfig.BACKGROUND_LEVEL1 = pygame.image.load("Projet_OUVINFO/img_file/level1.jpeg")
+        Gameconfig.BACKGROUND_LEVEL1 = pygame.image.load("..img_file/level1.jpeg")
         Gameconfig.WALK_RIGHT_IMG = [ 
-                                    pygame.image.load("Projet_OUVINFO/img_file/princesseright1.png").convert_alpha(),
-                                    pygame.image.load('Projet_OUVINFO/img_file/princesseright2.png').convert_alpha(),
+                                    pygame.image.load("/img_file/princesseright1.png").convert_alpha(),
+                                    pygame.image.load('/img_file/princesseright2.png').convert_alpha(),
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseright3.png').convert_alpha(),
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseright4.png').convert_alpha(),
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseright5.png').convert_alpha(),
