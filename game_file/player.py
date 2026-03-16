@@ -2,6 +2,7 @@
 contient la classe qui gère le joueur"""
 import pygame
 from gameconfig import Gameconfig
+import time 
 
 class Player(pygame.sprite.Sprite):
     LEFT = -1
@@ -30,6 +31,8 @@ class Player(pygame.sprite.Sprite):
         elif next_move.right:
             fx = Gameconfig.FORCE_RIGHT    
             self.direction = Player.RIGHT 
+        else:
+            self.direction = Player.NONE
             
         x,y = self.rect.topleft
         vx_min = -x/Gameconfig.DT
@@ -51,8 +54,9 @@ class Player(pygame.sprite.Sprite):
         self.sprite_count+=1
         if self.sprite_count >= Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER*len(Player.IMAGES[self.direction]) : 
             self.sprite_count=0
-            self.image = Player.IMAGES[self.direction][self.sprite_count//Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER]
-            self.mask = Player.MASKS[self.direction][self.sprite_count//Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER]
+        time.sleep(0.01)
+        self.image = Player.IMAGES[self.direction][self.sprite_count//Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER]
+        self.mask = Player.MASKS[self.direction][self.sprite_count//Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER]
 
     def on_ground(self):
         if self.rect.bottom == Gameconfig.Y_PLATEFORM:
