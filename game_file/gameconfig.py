@@ -7,12 +7,12 @@ class Gameconfig:
     BACKGROUND_LEVEL1 = None
     LARGEUR_LEVEL1 = 885
     LONGUEUR_LEVEL1 = 1595
-    WINDOW_H = 640
-    WINDOW_W = 960
+    WINDOW_H = 800
+    WINDOW_W = 1500
     BACKGROUND_LEVEL2 = None
     BACKGROUND_LEVEL3 = None
     STANDING_IMG = None
-    Y_PLATEFORM = 415
+    Y_PLATEFORM = 300
     PLAYER_W = 64
     PLAYER_H = 64
     DT = 0.5
@@ -30,7 +30,7 @@ class Gameconfig:
     NB_FRAMES_PER_SPRITE_PLAYER = 2
     
     def init():
-        Gameconfig.BACKGROUND_LEVEL1 = pygame.image.load("/Users/bensemmanecamelia/Desktop/OUVINFO/Projet_OUVINFO/img_file/level1.jpeg")
+        Gameconfig.BACKGROUND_LEVEL1 = pygame.image.load("Projet_OUVINFO/img_file/level1.jpeg")
         Gameconfig.WALK_RIGHT_IMG = [ 
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseright2.png').convert_alpha(),
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseright3.png').convert_alpha(),
@@ -39,14 +39,14 @@ class Gameconfig:
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseright6.png').convert_alpha(),
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseright7.png').convert_alpha()]
         
-        """Gameconfig.WALK_LEFT_IMG = [
+        Gameconfig.WALK_LEFT_IMG = [
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseleft2.png').convert_alpha(),
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseleft3.png').convert_alpha(),
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseleft4.png').convert_alpha(),
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseleft5.png').convert_alpha(),
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseleft6.png').convert_alpha(),
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseleft7.png').convert_alpha()]
-        """
+        
         
         Gameconfig.STANDING_IMG = [
                                     pygame.image.load('Projet_OUVINFO/img_file/princesseright2.png').convert_alpha()]
