@@ -4,6 +4,7 @@ import pygame
 from gameconfig import Gameconfig
 from gamestate import Gamestate
 from move import Move
+from player import Player
 
 def get_next_move():
     nextmove = Move()
@@ -34,6 +35,7 @@ if __name__ == "__main__":
     window = pygame.display.set_mode((Gameconfig.LONGUEUR_LEVEL1, Gameconfig.LARGEUR_LEVEL1))
     pygame.display.set_caption("monjeu")
     Gameconfig.init()
+    Player.init_sprites()
     gameloop(window)
     pygame.quit()
     quit()

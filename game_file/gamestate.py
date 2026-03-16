@@ -2,6 +2,7 @@
 Ce fichier définit l'état actuel du jeu"""
 from gameconfig import Gameconfig
 from player import *
+from move import Move
 
 class Gamestate: 
     def __init__(self):
@@ -13,3 +14,4 @@ class Gamestate:
         
     def advance_state(self, next_move):
         self.player.advance_state(next_move)
+    
