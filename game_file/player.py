@@ -2,6 +2,7 @@
 contient la classe qui gère le joueur"""
 import pygame
 from gameconfig import Gameconfig
+import time 
 
 class Player(pygame.sprite.Sprite):
     LEFT = -1
@@ -12,9 +13,9 @@ class Player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.rect = pygame.Rect(x, Gameconfig.Y_PLATEFORM, Gameconfig.PLAYER_H, Gameconfig.PLAYER_W)
         self.sprite_count = 0
-        self.direction = Player.NONE
-        self.image = Player.image[self.direction][self.sprite_count//Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER]
-        self.mask = Player.mask[self.direction][self.sprite_count//Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER]
+        self.direction = Player.NONE 
+        self.image = Player.IMAGES[self.direction][self.sprite_count//Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER]
+        self.mask = Player.MASKS[self.direction][self.sprite_count//Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER]
         self.vx = 0
         self.vy = 0
         
@@ -30,6 +31,8 @@ class Player(pygame.sprite.Sprite):
         elif next_move.right:
             fx = Gameconfig.FORCE_RIGHT    
             self.direction = Player.RIGHT 
+        else:
+            self.direction = Player.NONE
             
         x,y = self.rect.topleft
         vx_min = -x/Gameconfig.DT
@@ -45,14 +48,29 @@ class Player(pygame.sprite.Sprite):
             self.vy = fy*Gameconfig.DT
         else:
             self.vy = self.vy+Gameconfig.GRAVITY*Gameconfig.DT
+            
+            
+            
+            
+        if self.sprite_count >= Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER*len(Player.IMAGES[self.direction]) : 
+            self.sprite_count=0
+        time.sleep(0.001)
+        self.image = Player.IMAGES[self.direction][self.sprite_count//Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER]
+        self.mask = Player.MASKS[self.direction][self.sprite_count//Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER]
+
+            
+            
+            
+            
+            
+            
+            
         vy_max = (Gameconfig.Y_PLATEFORM-Gameconfig.PLAYER_H-y)/Gameconfig.DT
         self.vy = min(self.vy, vy_max)
         self.rect = self.rect.move(self.vx*Gameconfig.DT, self.vy*Gameconfig.DT)
         self.sprite_count+=1
-        if self.sprite_count >= Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER*len(Player.image[self.direction]) : 
-            self.sprite_count=0
-            self.image = Player.image[self.direction][self.sprite_count//Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER]
-            self.mask = Player.mask[self.direction][self.sprite_count//Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER]
+        
+
 
     def on_ground(self):
         if self.rect.bottom == Gameconfig.Y_PLATEFORM:
@@ -60,5 +78,5 @@ class Player(pygame.sprite.Sprite):
         return False
 
     def init_sprites():
-        Player.image = {Player.LEFT : Gameconfig.WALK_LEFT_IMG, Player.RIGHT : Gameconfig.WALK_RIGHT_IMG, Player.NONE : Gameconfig.STANDING_IMG}
-        Player.mask = {Player.LEFT : Gameconfig .WALK_LEFT_MASKS, Player.RIGHT : Gameconfig.WALK_RIGHT_MASKS, Player.NONE : Gameconfig.STANDING_MASK}
+        Player.IMAGES = {Player.LEFT : Gameconfig.WALK_LEFT_IMG, Player.RIGHT : Gameconfig.WALK_RIGHT_IMG, Player.NONE : Gameconfig.STANDING_IMG}
+        Player.MASKS = {Player.LEFT : Gameconfig .WALK_LEFT_MASKS, Player.RIGHT : Gameconfig.WALK_RIGHT_MASKS, Player.NONE : Gameconfig.STANDING_MASK}
