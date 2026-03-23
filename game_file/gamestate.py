@@ -6,7 +6,7 @@ from move import Move
 
 class Gamestate: 
     def __init__(self):
-        self.player = Player(12)
+        self.player = Player(20)
     
     def draw(self, window):
         window.blit(Gameconfig.BACKGROUND_LEVEL1, (0,0))

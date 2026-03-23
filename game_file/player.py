@@ -3,6 +3,7 @@ contient la classe qui gère le joueur"""
 import pygame
 from gameconfig import Gameconfig
 import time 
+from background import BG
 
 class Player(pygame.sprite.Sprite):
     LEFT = -1

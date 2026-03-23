@@ -6,15 +6,15 @@ import pygame
 class Gameconfig:
     BACKGROUND_LEVEL1 = None
     LARGEUR_LEVEL1 = 344
-    LONGUEUR_LEVEL1 = 2475
+    LONGUEUR_LEVEL1 = 675
     WINDOW_H = 344
-    WINDOW_W = 2475
+    WINDOW_W = 675
     BACKGROUND_LEVEL2 = None
     BACKGROUND_LEVEL3 = None
     STANDING_IMG = None
     Y_PLATEFORM = 147
-    PLAYER_W = 64
-    PLAYER_H = 64
+    PLAYER_W = 64 # A modifier avec les nouvelles tailles du joueur
+    PLAYER_H = 64 # A modifier avec les nouvelles tailles du joueur
     DT = 0.5
     FORCE_LEFT = -20
     FORCE_RIGHT = -FORCE_LEFT

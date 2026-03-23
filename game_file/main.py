@@ -5,6 +5,7 @@ from gameconfig import Gameconfig
 from gamestate import Gamestate
 from move import Move
 from player import Player
+from background import BG
 
 def get_next_move():
     nextmove = Move()
