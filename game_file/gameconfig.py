@@ -5,14 +5,14 @@ import pygame
 
 class Gameconfig:
     BACKGROUND_LEVEL1 = None
-    LARGEUR_LEVEL1 = 885
-    LONGUEUR_LEVEL1 = 1595
-    WINDOW_H = 800
-    WINDOW_W = 1500
+    LARGEUR_LEVEL1 = 344
+    LONGUEUR_LEVEL1 = 2475
+    WINDOW_H = 344
+    WINDOW_W = 2475
     BACKGROUND_LEVEL2 = None
     BACKGROUND_LEVEL3 = None
     STANDING_IMG = None
-    Y_PLATEFORM = 570
+    Y_PLATEFORM = 147
     PLAYER_W = 64
     PLAYER_H = 64
     DT = 0.5
@@ -30,7 +30,9 @@ class Gameconfig:
     NB_FRAMES_PER_SPRITE_PLAYER = 5
     
     def init():
-        Gameconfig.BACKGROUND_LEVEL1 = pygame.image.load("../img_file/level1.jpeg")
+        Gameconfig.BACKGROUND_LEVEL1 = pygame.image.load("../img_file/level1.png")
+        Gameconfig.BACKGROUND_LEVEL2 = pygame.image.load("../img_file/level2.jpeg")
+        Gameconfig.BACKGROUND_LEVEL3 = pygame.image.load("../img_file/level3.jpeg")
         Gameconfig.WALK_RIGHT_IMG = [ 
                                     pygame.image.load("../img_file/princesseright1.png").convert_alpha(),
                                     pygame.image.load('../img_file/princesseright2.png').convert_alpha(),
