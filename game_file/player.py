@@ -33,44 +33,28 @@ class Player(pygame.sprite.Sprite):
             self.direction = Player.RIGHT 
         else:
             self.direction = Player.NONE
-            
         x,y = self.rect.topleft
         vx_min = -x/Gameconfig.DT
         vx_max = (Gameconfig.WINDOW_W-Gameconfig.PLAYER_W-x)/Gameconfig.DT
         self.vx = fx*Gameconfig.DT
         self.vx = min(self.vx, vx_max)
         self.vx = max(self.vx, vx_min)
-        
         if next_move.jump:
             fy = Gameconfig.FORCE_JUMP
-
         if self.on_ground():
             self.vy = fy*Gameconfig.DT
         else:
-            self.vy = self.vy+Gameconfig.GRAVITY*Gameconfig.DT
-            
-            
-            
-            
+            self.vy = self.vy+Gameconfig.GRAVITY*Gameconfig.DT       
         if self.sprite_count >= Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER*len(Player.IMAGES[self.direction]) : 
             self.sprite_count=0
         time.sleep(0.001)
         self.image = Player.IMAGES[self.direction][self.sprite_count//Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER]
         self.mask = Player.MASKS[self.direction][self.sprite_count//Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER]
-
-            
-            
-            
-            
-            
-            
-            
         vy_max = (Gameconfig.Y_PLATEFORM-Gameconfig.PLAYER_H-y)/Gameconfig.DT
         self.vy = min(self.vy, vy_max)
         self.rect = self.rect.move(self.vx*Gameconfig.DT, self.vy*Gameconfig.DT)
         self.sprite_count+=1
         
-
 
     def on_ground(self):
         if self.rect.bottom == Gameconfig.Y_PLATEFORM:
