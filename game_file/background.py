@@ -1,8 +1,12 @@
 """ 
 contient la classe qui gère le joueur"""
 import pygame
+import math
 from gameconfig import Gameconfig
 
 class BG (pygame.sprite.Sprite):
     def __init__(self):
-        pass
+        self.image = pygame.image.load("../img_file/level1.png").convert()
+
+    def draw(self,window,seuil) :
+        window.blit(self.image,(seuil,0))

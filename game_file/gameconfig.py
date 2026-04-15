@@ -6,7 +6,7 @@ import pygame
 class Gameconfig:
     BACKGROUND_LEVEL1 = None
     LARGEUR_LEVEL1 = 344
-    LONGUEUR_LEVEL1 = 675
+    LONGUEUR_LEVEL1 = 675 #2475
     WINDOW_H = 344
     WINDOW_W = 675
     BACKGROUND_LEVEL2 = None
@@ -28,10 +28,12 @@ class Gameconfig:
     WALK_RIGHT_MASKS = [] 
     WALK_LEFT_MASKS = []
     NB_FRAMES_PER_SPRITE_PLAYER = 5
+    D_SEUIL = -2
+    seuil_max = -1800
     
     def init():
         Gameconfig.BACKGROUND_LEVEL1 = pygame.image.load("../img_file/level1.png")
-        Gameconfig.BACKGROUND_LEVEL2 = pygame.image.load("../img_file/level2.jpeg")
+        Gameconfig.BACKGROUND_LEVEL2 = pygame.image.load("../img_file/level2.jpg")
         Gameconfig.BACKGROUND_LEVEL3 = pygame.image.load("../img_file/level3.jpeg")
         Gameconfig.WALK_RIGHT_IMG = [ 
                                     pygame.image.load("../img_file/princesseright1.png").convert_alpha(),
