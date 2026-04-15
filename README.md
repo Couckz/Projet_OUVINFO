@@ -33,7 +33,11 @@ __Listes de tâches :__
 - [ ] Faire la surcouche du niveau 2, visuel (qui contiendra des objets avec lesquels on peut entrer en colision)
 - [ ] Implementer les colisions avec les plateformes présentes sur la surcouche du niveau 2
 - [ ] Implémenter les différents évenements (joueur qui récolte une clé, passage vers le prochain niveau, entrer en contact avec un ennemis)
-- [ ] Réaliser le niveau 3 en conservant la même série d'action 
-
+- [ ] Réaliser le niveau 3 en conservant la même série d'action
+- [ ] Finir le jeu le 18 mai
+- [ ] Organisation de l'oral à finir le 20 mai
+- [ ] Répétition orale le jeudi 21 mai
+- [ ] Rapport à faire entre le 21 et le 27
+- [ ] Présenter le projet le 27 mai 
  
 
