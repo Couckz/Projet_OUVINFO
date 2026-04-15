@@ -12,7 +12,7 @@ class Gameconfig:
     BACKGROUND_LEVEL2 = None
     BACKGROUND_LEVEL3 = None
     STANDING_IMG = None
-    Y_PLATEFORM = 147
+    Y_PLATEFORM = 285
     PLAYER_W = 64 # A modifier avec les nouvelles tailles du joueur
     PLAYER_H = 64 # A modifier avec les nouvelles tailles du joueur
     DT = 0.5

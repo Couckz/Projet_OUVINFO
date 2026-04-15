@@ -4,6 +4,8 @@ from gameconfig import Gameconfig
 from player import *
 from move import Move
 
+#Dessiner qd est ce qu'on s'arrête 
+#Centralise la gestion
 class Gamestate: 
     def __init__(self):
         self.player = Player(20)

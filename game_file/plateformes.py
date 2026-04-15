@@ -1,4 +1,4 @@
 import pygame
 
-class plateform(pygame.sprite.Sprite)
+class plateform(pygame.sprite.Sprite):
     pass
