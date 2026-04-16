@@ -32,7 +32,7 @@ class Gameconfig:
     seuil_max = -1800
     
     def init():
-        Gameconfig.BACKGROUND_LEVEL1 = pygame.image.load("../img_file/niveau1.png")
+        Gameconfig.BACKGROUND_LEVEL1 = pygame.image.load("../img_file/niv.png")
         Gameconfig.BACKGROUND_LEVEL2 = pygame.image.load("../img_file/level2.jpg")
         Gameconfig.BACKGROUND_LEVEL3 = pygame.image.load("../img_file/level3.jpeg")
         Gameconfig.WALK_RIGHT_IMG = [ 
