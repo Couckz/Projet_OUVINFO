@@ -5,16 +5,16 @@ import pygame
 
 class Gameconfig:
     BACKGROUND_LEVEL1 = None
-    LARGEUR_LEVEL1 = 344
-    LONGUEUR_LEVEL1 = 675 #2475
+    LARGEUR_LEVEL1 = 344 #344
+    LONGUEUR_LEVEL1 = 675 #675
     WINDOW_H = 344
     WINDOW_W = 675
     BACKGROUND_LEVEL2 = None
     BACKGROUND_LEVEL3 = None
     STANDING_IMG = None
     Y_PLATEFORM = 285
-    PLAYER_W = 64 # A modifier avec les nouvelles tailles du joueur
-    PLAYER_H = 64 # A modifier avec les nouvelles tailles du joueur
+    PLAYER_W = 40 
+    PLAYER_H = 64 
     DT = 0.5
     FORCE_LEFT = -20
     FORCE_RIGHT = -FORCE_LEFT
@@ -32,7 +32,7 @@ class Gameconfig:
     seuil_max = -1800
     
     def init():
-        Gameconfig.BACKGROUND_LEVEL1 = pygame.image.load("../img_file/level1.png")
+        Gameconfig.BACKGROUND_LEVEL1 = pygame.image.load("../img_file/niveau1.png")
         Gameconfig.BACKGROUND_LEVEL2 = pygame.image.load("../img_file/level2.jpg")
         Gameconfig.BACKGROUND_LEVEL3 = pygame.image.load("../img_file/level3.jpeg")
         Gameconfig.WALK_RIGHT_IMG = [ 

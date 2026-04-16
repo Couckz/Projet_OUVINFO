@@ -11,7 +11,7 @@ class Player(pygame.sprite.Sprite):
 
     def __init__(self, x):
         pygame.sprite.Sprite.__init__(self)
-        self.rect = pygame.Rect(x, Gameconfig.Y_PLATEFORM, Gameconfig.PLAYER_H, Gameconfig.PLAYER_W)
+        self.rect = pygame.Rect(x, Gameconfig.Y_PLATEFORM, Gameconfig.PLAYER_W, Gameconfig.PLAYER_H)
         self.sprite_count = 0
         self.direction = Player.NONE 
         self.image = Player.IMAGES[self.direction][self.sprite_count//Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER]
@@ -27,6 +27,8 @@ class Player(pygame.sprite.Sprite):
         if screen_x > Gameconfig.WINDOW_W - Gameconfig.PLAYER_W:
             screen_x = Gameconfig.WINDOW_W - Gameconfig.PLAYER_W
         window.blit(self.image, (screen_x, self.rect.y))
+        pygame.draw.rect(window, (255, 0, 0),(screen_x, self.rect.y, self.rect.width, self.rect.height), 2)
+
     
     #Récupérer le prochain état du joueur
     def advance_state(self, next_move):
