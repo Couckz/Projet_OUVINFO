@@ -28,6 +28,7 @@ def gameloop(window):
         next_move = get_next_move()
         game_state.advance_state(next_move)
         game_state.draw(window)
+        game_state.collision()
         pygame.display.update()
         pygame.time.delay(20)
     

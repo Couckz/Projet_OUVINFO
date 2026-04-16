@@ -9,6 +9,7 @@ from plateformes import plateform
 #Centralise la gestion
 class Gamestate: 
     def __init__(self):
+        self.game = Gameconfig()
         self.player = Player(20)
         self.seuil = 0
         self.bg = BG()
@@ -24,3 +25,10 @@ class Gamestate:
         for platform in self.platforms.platforms:
             pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 0)
             self.player.draw(window, self.seuil)
+    
+    def collision(self):
+        for platform in self.platforms.platforms:
+            if platform.colliderect(self.player.rect):
+                self.player.vx = 0
+                self.player.vy = 0
+                
