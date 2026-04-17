@@ -18,6 +18,7 @@ class Player(pygame.sprite.Sprite):
         self.mask = Player.MASKS[self.direction][self.sprite_count//Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER]
         self.vx = 0
         self.vy = 0
+        self.count_cle = 0
     
     #Sert à l'affichage et gestion du sprite principal du joueur
     def draw(self, window, seuil):
