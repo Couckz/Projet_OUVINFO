@@ -11,7 +11,7 @@ class Player(pygame.sprite.Sprite):
 
     def __init__(self, x):
         pygame.sprite.Sprite.__init__(self)
-        self.rect = pygame.Rect(x, Gameconfig.Y_PLATEFORM, Gameconfig.PLAYER_W, Gameconfig.PLAYER_H)
+        self.rect = pygame.Rect(x, 200, Gameconfig.PLAYER_W, Gameconfig.PLAYER_H)
         self.sprite_count = 0
         self.direction = Player.NONE 
         self.image = Player.IMAGES[self.direction][self.sprite_count//Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER]
@@ -19,6 +19,7 @@ class Player(pygame.sprite.Sprite):
         self.vx = 0
         self.vy = 0
         self.count_cle = 0
+        self.on_ground = True
     
     #Sert à l'affichage et gestion du sprite principal du joueur
     def draw(self, window, seuil):
@@ -28,7 +29,7 @@ class Player(pygame.sprite.Sprite):
         if screen_x > Gameconfig.WINDOW_W - Gameconfig.PLAYER_W:
             screen_x = Gameconfig.WINDOW_W - Gameconfig.PLAYER_W
         window.blit(self.image, (screen_x, self.rect.y))
-        pygame.draw.rect(window, (255, 0, 0),(screen_x, self.rect.y, self.rect.width, self.rect.height), 2)
+        #pygame.draw.rect(window, (255, 0, 0),(screen_x, self.rect.y, self.rect.width, self.rect.height), 2)
 
     
     #Récupérer le prochain état du joueur
@@ -49,12 +50,13 @@ class Player(pygame.sprite.Sprite):
         self.vx = fx*Gameconfig.DT
         self.vx = min(self.vx, vx_max)
         self.vx = max(self.vx, vx_min)
-        if next_move.jump:
+    
+        if next_move.jump and self.vy == 0:
             fy = Gameconfig.FORCE_JUMP
-        if self.on_ground():
             self.vy = fy*Gameconfig.DT
         else:
-            self.vy = self.vy+Gameconfig.GRAVITY*Gameconfig.DT       
+            self.vy = self.vy+Gameconfig.GRAVITY*Gameconfig.DT  
+        
         if self.sprite_count >= Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER*len(Player.IMAGES[self.direction]) : 
             self.sprite_count=0
         time.sleep(0.001)
@@ -65,11 +67,6 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.rect.move(self.vx*Gameconfig.DT, self.vy*Gameconfig.DT)
         self.sprite_count+=1
         
-    #Tester si le joueur est en collision avec le sol
-    def on_ground(self):
-        if self.rect.bottom == Gameconfig.Y_PLATEFORM:
-            return True
-        return False
 
     #Initialiser les sprites du joueur
     def init_sprites():

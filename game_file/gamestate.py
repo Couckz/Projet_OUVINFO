@@ -11,7 +11,7 @@ from cle import Cle
 class Gamestate: 
     def __init__(self):
         self.game = Gameconfig()
-        self.player = Player(60)
+        self.player = Player(80)
         self.cle = Cle()
         self.seuil = 0
         self.bg = BG()
@@ -25,24 +25,48 @@ class Gamestate:
         self.bg.draw(window, self.seuil)
         self.player.draw(window, self.seuil)
         self.cle.draw(window, self.seuil)
-        pygame.draw.rect(window, (0, 255, 0), (self.bg.rectcle.x, self.bg.rectcle.y, self.bg.rectcle.width, self.bg.rectcle.height), 2) #debogage interface
-        pygame.draw.rect(window, (0, 0, 255), (self.bg.rectporte.x + self.seuil, self.bg.rectporte.y, self.bg.rectporte.width, self.bg.rectporte.height), 2) #debogage interface
+        #pygame.draw.rect(window, (0, 255, 0), (self.bg.rectcle.x, self.bg.rectcle.y, self.bg.rectcle.width, self.bg.rectcle.height), 2) #debogage interface
+        #pygame.draw.rect(window, (0, 0, 255), (self.bg.rectporte.x + self.seuil, self.bg.rectporte.y, self.bg.rectporte.width, self.bg.rectporte.height), 2) #debogage interface
         
         print("window", self.seuil)
         print("position x", self.player.rect.x)
-        for platform in self.platforms.platforms:
-            pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 0)
+        #for platform in self.platforms.platforms:
+            #pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 0)
         
-        for key in self.cle.cles:
-            pygame.draw.rect(window, (0, 0, 255), (key.x + self.seuil, key.y, key.width, key.height), 2)
+        #for key in self.cle.cles:
+            #pygame.draw.rect(window, (0, 0, 255), (key.x + self.seuil, key.y, key.width, key.height), 2)
         
     
     def collision(self):
-        for platform in self.platforms.platforms:
-            if platform.colliderect(self.player.rect):
-                self.player.vx = 0
-                self.player.vy = 0
-    
+        
+        
+        #self.player.on_ground = False
+
+        for platforme in self.platforms.platforms:
+            if platforme.colliderect(self.player.rect):
+                if self.player.vy > 0:  # le joueur tombe
+                    if self.player.rect.bottom >= platforme.top:
+                        self.player.rect.bottom = platforme.top
+                        self.player.vy = 0
+                        self.player.on_ground = True
+                        
+                elif self.player.vy < 0:  # le joueur monte
+                    if self.player.rect.top <= platforme.bottom:
+                        self.player.rect.top = platforme.bottom
+                        self.player.vy = 0
+                        
+                if self.player.rect.colliderect(platforme):
+                    if self.player.vx > 0:  # vers la droite
+                        self.player.rect.right = platforme.left
+                    elif self.player.vx < 0:  # vers la gauche
+                        self.player.rect.left = platforme.right
+                        self.player.vx = 0
+        
+        
+        
+        
+        
+        
     def collision_cle(self):
         for cle in self.cle.cles:
             if cle.colliderect(self.player.rect):
@@ -55,9 +79,9 @@ class Gamestate:
                 self.seuil = 0
                 print("Jeu fini")
         
-    def fin_jeu(self):
-        if -self.seuil == self.player.rect.x:
-            return True
+    #def fin_jeu(self):
+        #if -self.seuil == self.player.rect.x:
+            #return True
     
     def ecran_fin_jeu(self):
         pass

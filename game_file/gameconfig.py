@@ -18,8 +18,8 @@ class Gameconfig:
     DT = 0.5
     FORCE_LEFT = -20
     FORCE_RIGHT = -FORCE_LEFT
-    GRAVITY = 7.81
-    FORCE_JUMP = -100
+    GRAVITY = 9.81
+    FORCE_JUMP = -95 #-100
     PRINCESSE = None
     STANDING_MASK = None
     WALK_RIGHT_IMG = []
