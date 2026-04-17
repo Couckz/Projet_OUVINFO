@@ -25,9 +25,12 @@ class Gamestate:
         self.bg.draw(window, self.seuil)
         self.player.draw(window, self.seuil)
         self.cle.draw(window, self.seuil)
+        #self.bg.interface_counter(window, self.seuil)
+        pygame.draw.rect(window, (0, 255, 0), (self.bg.rectcle.x, self.bg.rectcle.y, self.bg.rectcle.width, self.bg.rectcle.height), 2) #debogage interface
+        
+        
         for platform in self.platforms.platforms:
             pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 0)
-        
         
         for key in self.cle.cles:
             pygame.draw.rect(window, (0, 0, 255), (key.x + self.seuil, key.y, key.width, key.height), 2)
@@ -38,4 +41,10 @@ class Gamestate:
             if platform.colliderect(self.player.rect):
                 self.player.vx = 0
                 self.player.vy = 0
-                
+    
+    def collision_cle(self):
+        for cle in self.cle.cles:
+            if cle.colliderect(self.player.rect):
+                self.cle.cles.remove(cle)
+                self.player.count_cle+=1
+                self.bg.counter+=1
