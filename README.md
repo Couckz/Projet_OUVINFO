@@ -27,12 +27,12 @@ __Listes de tâches :__
 - [ OK  ] Implémenter un background mouvant qui bouge vers la droite, celui-ci bouge constamment et le joueur doit essayer de ne pas se faire toucher par celui-ci
 - [ OK ] Faire le background du niveau 1 (qui ne contient pas d'objet avec lesquels on peut entrer en contact)
 - [ OK ] Faire la surcouche du niveau 1, visuel (qui contiendra des objets avec lesquels on peut entrer en colision)
-- [ Partiellement ] Implementer les colisions avec les plateformes présentes sur la surcouche du niveau 1
+- [ OK (mais buggué) ] Implementer les colisions avec les plateformes présentes sur la surcouche du niveau 1
 - [ OK ] Implémenter les différents évenements (joueur qui récolte une clé, passage vers le prochain niveau, entrer en contact avec un ennemis)
 - [ OK ] Faire le background du niveau 2 (qui ne contient pas d'objet avec lesquels on peut entrer en contact)
-- [ ] Faire la surcouche du niveau 2, visuel (qui contiendra des objets avec lesquels on peut entrer en colision)
+- [ ] Faire la surcouche du niveau 2, visuel (qui contiendra des objets avec lesquels on peut entrer en colision. Seront présents uniquement la porte de sortie et les plateformes. SURTOUT PAS LES CLES)
 - [ ] Implementer les colisions avec les plateformes présentes sur la surcouche du niveau 2
-- [ ] Implémenter les différents évenements (joueur qui récolte une clé, passage vers le prochain niveau, entrer en contact avec un ennemis)
+- [ ] Implémenter les différents évenements (joueur qui récolte une clé, passage vers le prochain niveau, entrer en contact avec un ennemis potentiellement)
 - [ ] Réaliser le niveau 3 en conservant la même série d'action
 - [ ] Finir le jeu le 18 mai
 - [ ] Organisation de l'oral à finir le 20 mai
