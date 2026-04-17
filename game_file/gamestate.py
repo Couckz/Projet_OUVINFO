@@ -25,9 +25,8 @@ class Gamestate:
         self.bg.draw(window, self.seuil)
         self.player.draw(window, self.seuil)
         self.cle.draw(window, self.seuil)
-        #self.bg.interface_counter(window, self.seuil)
         pygame.draw.rect(window, (0, 255, 0), (self.bg.rectcle.x, self.bg.rectcle.y, self.bg.rectcle.width, self.bg.rectcle.height), 2) #debogage interface
-        
+        pygame.draw.rect(window, (0, 0, 255), (self.bg.rectporte.x + self.seuil, self.bg.rectporte.y, self.bg.rectporte.width, self.bg.rectporte.height), 2) #debogage interface
         
         for platform in self.platforms.platforms:
             pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 0)
@@ -48,3 +47,5 @@ class Gamestate:
                 self.cle.cles.remove(cle)
                 self.player.count_cle+=1
                 self.bg.counter+=1
+        if self.bg.rectporte.colliderect(self.player.rect) and self.bg.counter == 3:
+                print("Jeu fini")
