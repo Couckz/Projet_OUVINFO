@@ -25,11 +25,11 @@ __Listes de tâches :__
 - [ OK ] Réaliser la boucle du jeu, sa structure principale
 - [ OK ] Choix du sprite du joueur/ennemis, du background du niveau 1, du background du niveau 2, du background du niveau 3
 - [ OK  ] Implémenter un background mouvant qui bouge vers la droite, celui-ci bouge constamment et le joueur doit essayer de ne pas se faire toucher par celui-ci
-- [ ] Faire le background du niveau 1 (qui ne contient pas d'objet avec lesquels on peut entrer en contact)
-- [ ] Faire la surcouche du niveau 1, visuel (qui contiendra des objets avec lesquels on peut entrer en colision)
-- [ ] Implementer les colisions avec les plateformes présentes sur la surcouche du niveau 1
-- [ ] Implémenter les différents évenements (joueur qui récolte une clé, passage vers le prochain niveau, entrer en contact avec un ennemis)
-- [ ] Faire le background du niveau 2 (qui ne contient pas d'objet avec lesquels on peut entrer en contact)
+- [ OK ] Faire le background du niveau 1 (qui ne contient pas d'objet avec lesquels on peut entrer en contact)
+- [ OK ] Faire la surcouche du niveau 1, visuel (qui contiendra des objets avec lesquels on peut entrer en colision)
+- [ Partiellement ] Implementer les colisions avec les plateformes présentes sur la surcouche du niveau 1
+- [ OK ] Implémenter les différents évenements (joueur qui récolte une clé, passage vers le prochain niveau, entrer en contact avec un ennemis)
+- [ OK ] Faire le background du niveau 2 (qui ne contient pas d'objet avec lesquels on peut entrer en contact)
 - [ ] Faire la surcouche du niveau 2, visuel (qui contiendra des objets avec lesquels on peut entrer en colision)
 - [ ] Implementer les colisions avec les plateformes présentes sur la surcouche du niveau 2
 - [ ] Implémenter les différents évenements (joueur qui récolte une clé, passage vers le prochain niveau, entrer en contact avec un ennemis)
