@@ -30,8 +30,8 @@ def gameloop(window):
         game_state.draw(window)
         game_state.collision()
         game_state.collision_cle()
-        #if game_state.fin_jeu():
-            #quitting = True
+        if game_state.fin_jeu():
+            quitting = True
         pygame.display.update()
         pygame.time.delay(20)
     

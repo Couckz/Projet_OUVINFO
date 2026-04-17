@@ -62,11 +62,6 @@ class Gamestate:
                         self.player.rect.left = platforme.right
                         self.player.vx = 0
         
-        
-        
-        
-        
-        
     def collision_cle(self):
         for cle in self.cle.cles:
             if cle.colliderect(self.player.rect):
@@ -79,9 +74,9 @@ class Gamestate:
                 self.seuil = 0
                 print("Jeu fini")
         
-    #def fin_jeu(self):
-        #if -self.seuil == self.player.rect.x:
-            #return True
+    def fin_jeu(self):
+        if -self.seuil == self.player.rect.x:
+            return True
     
     def ecran_fin_jeu(self):
         pass
