@@ -6,7 +6,10 @@ from gameconfig import Gameconfig
 
 class BG (pygame.sprite.Sprite):
     def __init__(self):
-        self.image = pygame.image.load("../img_file/niv.png").convert()
+        self.counter_niveau = 0
+        self.image = [pygame.image.load("../img_file/niv.png").convert(),
+                    pygame.image.load("../img_file/level2.jpg").convert(),
+                    pygame.image.load("../img_file/level3.jpeg").convert(),]
         self.counter = 0
         self.rectcle = pygame.Rect(20, 10, 130, 70)
         self.rectporte = pygame.Rect(2350, 185, 85, 100)
@@ -18,7 +21,13 @@ class BG (pygame.sprite.Sprite):
         ]
 
     def draw(self,window,seuil) :
-        window.blit(self.image,(seuil,0))
+        if self.counter_niveau == 0:
+            window.blit(self.image[0],(seuil,0))
+        if self.counter_niveau == 1:
+            window.blit(self.image[1],(seuil,0))
+        if self.counter_niveau == 2:
+            window.blit(self.image[2],(seuil,0))
+        
         if self.counter == 0:
             window.blit(self.imgcle[0], (self.rectcle.x , self.rectcle.y))
         if self.counter == 1:

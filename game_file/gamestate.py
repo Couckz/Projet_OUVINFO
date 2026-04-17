@@ -11,7 +11,7 @@ from cle import Cle
 class Gamestate: 
     def __init__(self):
         self.game = Gameconfig()
-        self.player = Player(20)
+        self.player = Player(60)
         self.cle = Cle()
         self.seuil = 0
         self.bg = BG()
@@ -28,6 +28,8 @@ class Gamestate:
         pygame.draw.rect(window, (0, 255, 0), (self.bg.rectcle.x, self.bg.rectcle.y, self.bg.rectcle.width, self.bg.rectcle.height), 2) #debogage interface
         pygame.draw.rect(window, (0, 0, 255), (self.bg.rectporte.x + self.seuil, self.bg.rectporte.y, self.bg.rectporte.width, self.bg.rectporte.height), 2) #debogage interface
         
+        print("window", self.seuil)
+        print("position x", self.player.rect.x)
         for platform in self.platforms.platforms:
             pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 0)
         
@@ -45,7 +47,17 @@ class Gamestate:
         for cle in self.cle.cles:
             if cle.colliderect(self.player.rect):
                 self.cle.cles.remove(cle)
-                self.player.count_cle+=1
                 self.bg.counter+=1
+                
         if self.bg.rectporte.colliderect(self.player.rect) and self.bg.counter == 3:
+                self.bg.counter_niveau+=1
+                self.bg.counter = 0
+                self.seuil = 0
                 print("Jeu fini")
+        
+    def fin_jeu(self):
+        if -self.seuil == self.player.rect.x:
+            return True
+    
+    def ecran_fin_jeu(self):
+        pass
