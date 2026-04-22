@@ -9,7 +9,7 @@ class BG (pygame.sprite.Sprite):
         self.counter_niveau = 0
         self.image = [pygame.image.load("../img_file/niv.png").convert(),
                     pygame.image.load("../img_file/niv2.png").convert(),
-                    pygame.image.load("../img_file/level3.jpeg").convert(),]
+                    pygame.image.load("../img_file/lev3.png").convert(),]
         self.counter = 0
         self.rectcle = pygame.Rect(20, 10, 130, 70)
         self.rectporte = [pygame.Rect(2350, 185, 85, 100),

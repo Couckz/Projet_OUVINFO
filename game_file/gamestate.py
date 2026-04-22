@@ -44,7 +44,13 @@ class Gamestate:
             for key in self.cle.cles_niv2:
                 pygame.draw.rect(window, (0, 0, 255), (key.x + self.seuil, key.y, key.width, key.height), 2)
         
-    
+        #Debogage, niveau3
+        if self.bg.counter_niveau == 2:
+            for platform in self.platforms.platforms_niv2:
+                pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 2)
+            for key in self.cle.cles_niv3:
+                pygame.draw.rect(window, (0, 0, 255), (key.x + self.seuil, key.y, key.width, key.height), 2)
+                
     def collision(self):
         #self.player.on_ground = False
         if self.bg.counter_niveau == 0:
@@ -64,6 +70,7 @@ class Gamestate:
                     if self.player.rect.colliderect(platforme):
                         if self.player.vx > 0:  # vers la droite
                             self.player.rect.right = platforme.left
+                            self.player.vx = 0
                         elif self.player.vx < 0:  # vers la gauche
                             self.player.rect.left = platforme.right
                             self.player.vx = 0
@@ -124,9 +131,9 @@ class Gamestate:
                     self.bg.counter+=1
         
         if self.cle.counter_clelevel == 2:
-            for cle in self.cle.cles_niv2:
+            for cle in self.cle.cles_niv3:
                 if cle.colliderect(self.player.rect):
-                    self.cle.cles_niv2.remove(cle)
+                    self.cle.cles_niv3.remove(cle)
                     self.bg.counter+=1
                     
         if self.bg.rectporte[self.bg.counter_niveau].colliderect(self.player.rect) and self.bg.counter == 3:
