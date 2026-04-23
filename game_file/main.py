@@ -31,7 +31,8 @@ def gameloop(window):
         game_state.collision()
         game_state.collision_cle()
         if game_state.fin_jeu():
-            quitting = True
+            game_state.ecran_fin_jeu(window)
+            #quitting = True
         pygame.display.update()
         pygame.time.delay(20)
     
@@ -42,5 +43,8 @@ if __name__ == "__main__":
     Gameconfig.init()
     Player.init_sprites()
     gameloop(window)
+    #bg = BG()
+    #if bg.click >= 1:
+        #gameloop(window)
     pygame.quit()
     quit()

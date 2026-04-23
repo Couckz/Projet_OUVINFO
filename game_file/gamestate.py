@@ -148,5 +148,7 @@ class Gamestate:
         if -self.seuil >= self.player.rect.x:
             return True
     
-    def ecran_fin_jeu(self):
-        pass
+    def ecran_fin_jeu(self, window):
+        self.bg.draw_end(window)
+        pygame.draw.rect(window, (0, 0, 255), (self.bg.rectbutton[0].x, self.bg.rectbutton[0].y, self.bg.rectbutton[0].width, self.bg.rectbutton[0].height), 2)
+        
