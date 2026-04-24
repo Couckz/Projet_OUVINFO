@@ -33,8 +33,8 @@ __Listes de tâches :__
 - [ OK ] Faire la surcouche du niveau 2, visuel (qui contiendra des objets avec lesquels on peut entrer en colision. Seront présents uniquement la porte de sortie et les plateformes. SURTOUT PAS LES CLES)
 - [ OK ] Implementer les colisions avec les plateformes présentes sur la surcouche du niveau 2
 - [ OK ] Implémenter les différents évenements (joueur qui récolte une clé, passage vers le prochain niveau, entrer en contact avec un ennemis potentiellement)
-- [ ] Réaliser le niveau 3 en conservant la même série d'action
-- [ ] Réaliser un menu de fin/début et un menu en cas de game over
+- [ OK ] Réaliser le niveau 3 en conservant la même série d'action
+- [ OK  ] Réaliser un menu de fin/début et un menu en cas de game over
 - [ ] Implémenter les ennemis sur chacun des niveaux, une barre de vie pour le joueur et des projectiles pour les ennemis/le joueur
 - [ ] Finir le jeu le 18 mai
 - [ ] Organisation de l'oral à finir le 20 mai
