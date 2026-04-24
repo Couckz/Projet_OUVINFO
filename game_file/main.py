@@ -25,14 +25,17 @@ def gameloop(window):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quitting = True
-        next_move = get_next_move()
-        game_state.advance_state(next_move)
-        game_state.draw(window)
-        game_state.collision()
-        game_state.collision_cle()
-        if game_state.fin_jeu():
-            game_state.ecran_fin_jeu(window)
-            #quitting = True
+        if game_state.bg.counter_niveau == 5:
+            game_state.debut_jeu(window)
+        else :
+            next_move = get_next_move()
+            game_state.advance_state(next_move)
+            game_state.draw(window)
+            game_state.collision()
+            game_state.collision_cle()
+            if game_state.fin_jeu():
+                game_state.ecran_fin_jeu(window)
+                #quitting = True
         pygame.display.update()
         pygame.time.delay(20)
     
@@ -43,8 +46,5 @@ if __name__ == "__main__":
     Gameconfig.init()
     Player.init_sprites()
     gameloop(window)
-    #bg = BG()
-    #if bg.click >= 1:
-        #gameloop(window)
     pygame.quit()
     quit()

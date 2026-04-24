@@ -153,9 +153,24 @@ class Gamestate:
         #Debug
         pygame.draw.rect(window, (0, 0, 255), (self.bg.rectbutton[0].x, self.bg.rectbutton[0].y, self.bg.rectbutton[0].width, self.bg.rectbutton[0].height), 2)
         if self.bg.click >= 1:
+            self.player = Player(80)
             self.bg.counter_niveau = 0
             self.bg.counter = 0
             self.bg.start = 0
             self.cle.counter_clelevel = 0
             self.seuil = 0
             self.bg.click = 0
+    
+    def debut_jeu(self,window):
+        if self.bg.counter_niveau == 5:
+            self.bg.draw_start(window)
+            if self.bg.start_click >= 1:
+                self.player = Player(80)
+                self.bg.counter_niveau = 0
+                self.bg.counter = 0
+                self.bg.start = 0
+                self.cle.counter_clelevel = 0
+                self.seuil = 0
+                self.bg.click = 0
+            pygame.draw.rect(window, (0, 0, 255), (self.bg.rectbutton[0].x, self.bg.rectbutton[0].y, self.bg.rectbutton[0].width, self.bg.rectbutton[0].height), 2)
+        
