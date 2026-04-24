@@ -15,6 +15,8 @@ class Gameconfig:
     Y_PLATEFORM = 285
     PLAYER_W = 40 
     PLAYER_H = 64 
+    ENNEMIS_W = 40 
+    ENNEMIS_H = 64 
     DT = 0.5
     FORCE_LEFT = -20
     FORCE_RIGHT = -FORCE_LEFT
@@ -35,6 +37,10 @@ class Gameconfig:
         Gameconfig.BACKGROUND_LEVEL1 = pygame.image.load("../img_file/niv.png")
         Gameconfig.BACKGROUND_LEVEL2 = pygame.image.load("../img_file/level2.jpg")
         Gameconfig.BACKGROUND_LEVEL3 = pygame.image.load("../img_file/level3.jpeg")
+        
+        
+        #Pour le player
+        
         Gameconfig.WALK_RIGHT_IMG = [ 
                                     pygame.image.load("../img_file/princesseright1.png").convert_alpha(),
                                     pygame.image.load('../img_file/princesseright2.png').convert_alpha(),
@@ -53,7 +59,6 @@ class Gameconfig:
                                     pygame.image.load('../img_file/princesseleft6.png').convert_alpha(),
                                     pygame.image.load('../img_file/princesseleft7.png').convert_alpha()]
         
-        
         Gameconfig.STANDING_IMG = [
                                     pygame.image.load('../img_file/princesseright1.png').convert_alpha()]
         
@@ -64,3 +69,6 @@ class Gameconfig:
         for im in Gameconfig.WALK_LEFT_IMG :
             Gameconfig.WALK_LEFT_MASKS.append(pygame.mask.from_surface(im))
         Gameconfig.STANDING_MASK = [pygame.mask.from_surface(Gameconfig.STANDING_IMG[0])]
+        
+        # __________________________ENNEMIS
+        
