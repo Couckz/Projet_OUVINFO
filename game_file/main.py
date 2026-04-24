@@ -31,6 +31,7 @@ def gameloop(window):
             next_move = get_next_move()
             game_state.advance_state(next_move)
             game_state.draw(window)
+            game_state.move_ennemi()
             game_state.collision()
             game_state.collision_cle()
             if game_state.fin_jeu():

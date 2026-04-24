@@ -6,6 +6,7 @@ from move import Move
 from background import BG
 from plateformes import plateform 
 from cle import Cle
+from ennemis import Ennemis
 #Dessiner qd est ce qu'on s'arrête 
 #Centralise la gestion
 class Gamestate: 
@@ -13,6 +14,7 @@ class Gamestate:
         self.game = Gameconfig()
         self.player = Player(80)
         self.cle = Cle()
+        self.ennemi = Ennemis()
         self.seuil = 0
         self.bg = BG()
         self.platforms = plateform()
@@ -20,6 +22,7 @@ class Gamestate:
     def advance_state(self, next_move):
         self.player.advance_state(next_move)
         self.seuil = max(self.seuil+Gameconfig.D_SEUIL, Gameconfig.seuil_max)
+        
     
     def draw(self, window):
         self.bg.draw(window, self.seuil)
@@ -37,7 +40,8 @@ class Gamestate:
                 pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 2)
             for key in self.cle.cles_niv1:
                 pygame.draw.rect(window, (0, 0, 255), (key.x + self.seuil, key.y, key.width, key.height), 2)
-        
+            for position in self.ennemi.position_level1:
+                pygame.draw.rect(window, (255, 255, 0), (position.x + self.seuil, position.y, position.width, position.height), 0)
         #Debogage, niveau 2
         if self.bg.counter_niveau == 1:
             for platform in self.platforms.platforms_niv2:
@@ -53,7 +57,11 @@ class Gamestate:
                 pygame.draw.rect(window, (0, 0, 255), (key.x + self.seuil, key.y, key.width, key.height), 2)
                 
         
-        
+    def move_ennemi(self):
+        if self.bg.counter_niveau == 0:
+            print(self.bg.counter_niveau)
+            for positions in self.ennemi.position_level1:
+                positions.x = positions.x+50+self.seuil
             
     def collision(self):
         #self.player.on_ground = False
