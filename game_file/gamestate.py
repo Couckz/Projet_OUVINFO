@@ -47,7 +47,7 @@ class Gamestate:
         
         #Debogage, niveau3
         if self.bg.counter_niveau == 2:
-            for platform in self.platforms.platforms_niv2:
+            for platform in self.platforms.platforms_niv3:
                 pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 2)
             for key in self.cle.cles_niv3:
                 pygame.draw.rect(window, (0, 0, 255), (key.x + self.seuil, key.y, key.width, key.height), 2)
@@ -146,7 +146,7 @@ class Gamestate:
                 self.bg.counter = 0
                 self.seuil = 0
                 self.player = Player(50)
-                print("Jeu fini")
+                #print("Jeu fini")
         
     def fin_jeu(self):
         if -self.seuil >= self.player.rect.x:
@@ -158,6 +158,7 @@ class Gamestate:
         pygame.draw.rect(window, (0, 0, 255), (self.bg.rectbutton[0].x, self.bg.rectbutton[0].y, self.bg.rectbutton[0].width, self.bg.rectbutton[0].height), 2)
         if self.bg.click >= 1:
             self.player = Player(80)
+            self.cle = Cle() 
             self.bg.counter_niveau = 0
             self.bg.counter = 0
             self.bg.start = 0
@@ -170,6 +171,7 @@ class Gamestate:
             self.bg.draw_start(window)
             if self.bg.start_click >= 1:
                 self.player = Player(80)
+                self.cle = Cle() 
                 self.bg.counter_niveau = 0
                 self.bg.counter = 0
                 self.bg.start = 0
