@@ -27,6 +27,7 @@ class Gamestate:
         self.cle.draw(window, self.seuil)
         pygame.draw.rect(window, (0, 255, 0), (self.bg.rectcle.x, self.bg.rectcle.y, self.bg.rectcle.width, self.bg.rectcle.height), 2) #debogage interface
         pygame.draw.rect(window, (0, 0, 255), (self.bg.rectporte[self.bg.counter_niveau].x + self.seuil, self.bg.rectporte[self.bg.counter_niveau].y, self.bg.rectporte[self.bg.counter_niveau].width, self.bg.rectporte[self.bg.counter_niveau].height), 2) #debogage interface
+        pygame.draw.rect(window, (0, 255, 0), (self.bg.rectvie.x, self.bg.rectvie.y,  self.bg.rectvie.width, self.bg.rectvie.height), 2)
         #print("window", self.seuil)
         #print("position x", self.player.rect.x)
         
@@ -51,6 +52,9 @@ class Gamestate:
             for key in self.cle.cles_niv3:
                 pygame.draw.rect(window, (0, 0, 255), (key.x + self.seuil, key.y, key.width, key.height), 2)
                 
+        
+        
+            
     def collision(self):
         #self.player.on_ground = False
         if self.bg.counter_niveau == 0:
@@ -172,5 +176,5 @@ class Gamestate:
                 self.cle.counter_clelevel = 0
                 self.seuil = 0
                 self.bg.click = 0
-            pygame.draw.rect(window, (0, 0, 255), (self.bg.rectbutton[0].x, self.bg.rectbutton[0].y, self.bg.rectbutton[0].width, self.bg.rectbutton[0].height), 2)
+            pygame.draw.rect(window, (0, 0, 255), (self.bg.rectbutton[1].x, self.bg.rectbutton[1].y, self.bg.rectbutton[1].width, self.bg.rectbutton[1].height), 2)
         
