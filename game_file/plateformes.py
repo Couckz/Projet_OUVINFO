@@ -5,14 +5,14 @@ class plateform(pygame.sprite.Sprite):
     def __init__(self):
         self.platforms_niv1 = [
             pygame.Rect(10, 285, 2475, 60), #sol
-            pygame.Rect(830, 180, 90, 20), 
-            pygame.Rect(350, 170, 240, 25),
-            pygame.Rect(940, 260, 70, 25),
-            pygame.Rect(987, 230, 100, 25),
-            pygame.Rect(1420, 260, 130, 25),
-            pygame.Rect(1550, 190, 130, 25),
+            pygame.Rect(840, 180, 90, 25),   #plat2
+            pygame.Rect(340, 180, 250, 25), #plat 1
+            pygame.Rect(930, 260, 70, 25), #plat3
+            pygame.Rect(987, 230, 80, 25), #plat4
+            pygame.Rect(1420, 260, 140, 25), #plat5
+            pygame.Rect(1550, 200, 130, 30), #plat6
             pygame.Rect(1690, 160, 130, 25),
-            pygame.Rect(2020, 160, 130, 25),
+            pygame.Rect(2020, 170, 130, 25),
             pygame.Rect(2170, 260, 130, 25),
 ]       
         self.platforms_niv2 = [
