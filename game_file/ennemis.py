@@ -12,12 +12,15 @@ class Ennemis(pygame.sprite.Sprite):
         self.vx = 0
         self.vy = 0
         self.position_level1 = [
-            pygame.Rect(500, 225, 50, 60)
+            pygame.Rect(500, 225, 50, 60) #Monstre 1
         ]
+        
+        
         self.position_level2 = [
             
         ]
         self.position_level3 = [
             
         ]
+        
         

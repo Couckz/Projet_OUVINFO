@@ -60,8 +60,18 @@ class Gamestate:
     def move_ennemi(self):
         if self.bg.counter_niveau == 0:
             print(self.bg.counter_niveau)
+            seuil_bas = 450
+            seuil_haut = 600
+            seuil_b = seuil_bas
+            seuil_h = seuil_haut
             for positions in self.ennemi.position_level1:
-                positions.x = positions.x+50+self.seuil
+                seuil_bas = positions.x - 20
+                seuil_haut = positions.x + 20
+                if positions.x <= seuil_h:
+                    positions.x = positions.x+5
+                elif min(positions.x, seuil_bas) != positions.x :
+                        positions.x = positions.x-5
+        
             
     def collision(self):
         #self.player.on_ground = False
