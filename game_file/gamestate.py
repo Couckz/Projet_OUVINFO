@@ -190,10 +190,10 @@ class Gamestate:
             if self.bg.start_click >= 1:
                 self.player = Player(80)
                 self.cle = Cle() 
-                self.bg.counter_niveau = 0
+                self.bg.counter_niveau = 2
                 self.bg.counter = 0
                 self.bg.start = 0
-                self.cle.counter_clelevel = 0
+                self.cle.counter_clelevel = 2
                 self.seuil = 0
                 self.bg.click = 0
             pygame.draw.rect(window, (0, 0, 255), (self.bg.rectbutton[1].x, self.bg.rectbutton[1].y, self.bg.rectbutton[1].width, self.bg.rectbutton[1].height), 2)

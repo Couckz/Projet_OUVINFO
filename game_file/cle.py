@@ -17,9 +17,9 @@ class Cle:
         ]
         
         self.cles_niv3 = [
-            pygame.Rect(840, 150, 50, 20), #cle1
-            pygame.Rect(1550, 260, 50, 20), #cle2
-            pygame.Rect(2050, 130, 50, 20) #cle3
+            pygame.Rect(550, 55, 50, 20), #cle1
+            pygame.Rect(1020, 250, 50, 20), #cle2
+            pygame.Rect(1300, 90, 50, 20) #cle3
         ]
         self.img = pygame.image.load("../img_file/clered.png")
     
