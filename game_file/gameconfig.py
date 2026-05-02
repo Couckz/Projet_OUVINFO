@@ -32,11 +32,20 @@ class Gameconfig:
     NB_FRAMES_PER_SPRITE_PLAYER = 5
     D_SEUIL = -2
     seuil_max = -1800
+
+    FIN_BACKGROUND = None
+    PRINCE_W = 40
+    PRINCE_H = 64
+    PRINCE_IMG = None 
     
     def init():
+        pygame.font.init()
+        Gameconfig.FONT_FIN = pygame.font.SysFont("Arial", 50)
+        Gameconfig.FONT_PETITE = pygame.font.SysFont("Ariel", 20)
         Gameconfig.BACKGROUND_LEVEL1 = pygame.image.load("../img_file/niv.png")
         Gameconfig.BACKGROUND_LEVEL2 = pygame.image.load("../img_file/level2.jpg")
         Gameconfig.BACKGROUND_LEVEL3 = pygame.image.load("../img_file/level3.jpeg")
+        Gameconfig.FIN_BACKGROUND = pygame.image.load("../img_file/level_findejeu.png")
         
         
         #Pour le player
@@ -60,7 +69,11 @@ class Gameconfig:
                                     pygame.image.load('../img_file/princesseleft7.png').convert_alpha()]
         
         Gameconfig.STANDING_IMG = [
-                                    pygame.image.load('../img_file/princesseright1.png').convert_alpha()]
+                                    pygame.image.load('../img_file/princesseright1.png').convert_alpha()
+                                    
+                                    ]
+        
+        Gameconfig.PRINCE_IMG = pygame.image.load("../img_file/prince.png").convert_alpha()
         
         Gameconfig.WALK_RIGHT_MASKS = [] 
         Gameconfig.WALK_LEFT_MASKS = []
@@ -68,7 +81,9 @@ class Gameconfig:
             Gameconfig.WALK_RIGHT_MASKS.append(pygame.mask.from_surface(im)) 
         for im in Gameconfig.WALK_LEFT_IMG :
             Gameconfig.WALK_LEFT_MASKS.append(pygame.mask.from_surface(im))
-        Gameconfig.STANDING_MASK = [pygame.mask.from_surface(Gameconfig.STANDING_IMG[0])]
+        Gameconfig.STANDING_MASK = []
+        for im in Gameconfig.STANDING_IMG :
+            Gameconfig.STANDING_MASK.append(pygame.mask.from_surface(im))
         
         # __________________________ENNEMIS
         

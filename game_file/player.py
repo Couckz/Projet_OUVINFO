@@ -60,8 +60,10 @@ class Player(pygame.sprite.Sprite):
         if self.sprite_count >= Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER*len(Player.IMAGES[self.direction]) : 
             self.sprite_count=0
         time.sleep(0.001) #0.001
-        self.image = Player.IMAGES[self.direction][self.sprite_count//Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER]
-        self.mask = Player.MASKS[self.direction][self.sprite_count//Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER]
+        num_images = len(Player.IMAGES[self.direction])
+        frame_index = (self.sprite_count// Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER)%num_images
+        self.image = Player.IMAGES[self.direction][frame_index]
+        self.mask = Player.MASKS[self.direction][frame_index]
         vy_max = (Gameconfig.Y_PLATEFORM-Gameconfig.PLAYER_H-y)/Gameconfig.DT
         self.vy = min(self.vy, vy_max)
         self.rect = self.rect.move(self.vx*Gameconfig.DT, self.vy*Gameconfig.DT)
