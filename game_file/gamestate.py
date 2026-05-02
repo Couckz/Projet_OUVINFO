@@ -6,6 +6,7 @@ from move import Move
 from background import BG
 from plateformes import plateform 
 from cle import Cle
+from prince import Prince
 from ennemis import Ennemis
 #Dessiner qd est ce qu'on s'arrête 
 #Centralise la gestion
@@ -18,11 +19,12 @@ class Gamestate:
         self.seuil = 0
         self.bg = BG()
         self.platforms = plateform()
+        self.fin_atteinte = False 
+        self.prince = Prince(300, Gameconfig.Y_PLATEFORM - Gameconfig.PRINCE_H)
 
     def advance_state(self, next_move):
         self.player.advance_state(next_move)
         self.seuil = max(self.seuil+Gameconfig.D_SEUIL, Gameconfig.seuil_max)
-        
     
     def draw(self, window):
         self.bg.draw(window, self.seuil)
@@ -55,6 +57,19 @@ class Gamestate:
                 pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 2)
             for key in self.cle.cles_niv3:
                 pygame.draw.rect(window, (0, 0, 255), (key.x + self.seuil, key.y, key.width, key.height), 2)
+
+        if self.bg.counter_niveau == 3 :
+           window.blit(self.bg.image[8], (0, 0))
+           self.prince.draw(window, self.seuil)
+
+           if self.player.rect.colliderect(self.prince.rect) :
+            self.fin_atteinte = True 
+            self.bg.counter_niveau = 4
+
+        if self.bg.counter_niveau == 4 :
+            self.prince.draw(window, self.seuil)
+            if self.fin_atteinte :
+                self.dessiner_fin(window)
                 
         
     def move_ennemi(self):
@@ -138,6 +153,28 @@ class Gamestate:
                         elif self.player.vx < 0:  # vers la gauche
                             self.player.rect.left = platforme.right
                             self.player.vx = 0
+
+        
+        if self.bg.counter_niveau == 3  :
+            for platforme in self.platforms.plateforms_niv4 :
+                if platforme.colliderect(self.player.rect):
+                    if self.player.vy > 0:  # le joueur tombe
+                        if self.player.rect.bottom >= platforme.top:
+                            self.player.rect.bottom = platforme.top
+                            self.player.vy = 0
+                            self.player.on_ground = True
+                        
+                    elif self.player.vy < 0:  # le joueur monte
+                        if self.player.rect.top <= platforme.bottom:
+                            self.player.rect.top = platforme.bottom
+                            self.player.vy = 0
+                        
+                    if self.player.rect.colliderect(platforme):
+                        if self.player.vx > 0:  # vers la droite
+                            self.player.rect.right = platforme.left
+                        elif self.player.vx < 0:  # vers la gauche
+                            self.player.rect.left = platforme.right
+                            self.player.vx = 0
         
     def collision_cle(self):
         if self.cle.counter_clelevel == 0:
@@ -198,3 +235,32 @@ class Gamestate:
                 self.bg.click = 0
             pygame.draw.rect(window, (0, 0, 255), (self.bg.rectbutton[1].x, self.bg.rectbutton[1].y, self.bg.rectbutton[1].width, self.bg.rectbutton[1].height), 2)
         
+
+    def dessiner_fin(self, window) :
+        overlay = pygame.Surface((Gameconfig.WINDOW_W, Gameconfig.WINDOW_H), pygame.SRCALPHA)
+        overlay.fill((0,0,0,150))
+        window.blit(overlay, (0,0))
+
+        texte_victoire = Gameconfig.FONT_FIN.render("Le Prince est délivré !", True, (255,215,0))
+        texte_sous_titre = Gameconfig.FONT_PETITE.render ("Félicitation, vous avez gagné !", True, (255,255,255))
+
+        rect_victoire = texte_victoire.get_rect(center=(Gameconfig.WINDOW_W//2, Gameconfig.WINDOW_H//2-40))
+        rect_sous_titre = texte_sous_titre.get_rect(center=(Gameconfig.WINDOW_W//2, Gameconfig.WINDOW_H//20+20))
+
+        window.blit(texte_victoire, rect_victoire)
+        window.blit(texte_sous_titre, rect_sous_titre)
+
+        bouton_rect = pygame.Rect(Gameconfig.WINDOW_W//2-100, Gameconfig.WINDOW_H//2+60, 200, 50)
+        pygame.draw.rect(window, (255,255,255), bouton_rect, 2)
+
+        texte_rejouer = Gameconfig.FONT_PETITE.render("Cliquez pour Rejouer", True, (255,255,255))
+        rect_texte_btn = texte_rejouer.get_rect(center=bouton_rect.center)
+        window.blit(texte_rejouer, rect_texte_btn)
+
+        souris = pygame.mouse.get_pos()
+        if bouton_rect.collidepoint(souris) :
+            pygame.draw.rect(window, (255,255,255), bouton_rect)
+            window.blit(Gameconfig.FONT_PETITE.render("Cliquez pour Rejouer", True, (0,0,0)), rect_texte_btn)
+
+            if pygame.mouse.get_pressed()[0] :
+                self.__init__()

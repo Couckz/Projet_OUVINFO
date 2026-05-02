@@ -21,12 +21,23 @@ def get_next_move():
 def gameloop(window):
     quitting = False
     game_state = Gamestate()
+
+    game_state.bg.counter_niveau = 3
     while not quitting : 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quitting = True
         if game_state.bg.counter_niveau == 5:
             game_state.debut_jeu(window)
+        elif game_state.bg.counter_niveau == 3  and game_state.fin_atteinte :
+            game_state.dessiner_fin(window)
+            if game_state.player.rect.colliderect(game_state.prince.rect) :
+                game_state.fin_atteinte = True
+                game_state.bg.counter_niveau = 4
+        
+        elif game_state.bg.counter_niveau == 4  :
+            game_state.dessiner_fin(window)
+            
         else :
             next_move = get_next_move()
             game_state.advance_state(next_move)
@@ -42,7 +53,7 @@ def gameloop(window):
     
 if __name__ == "__main__":
     pygame.init()
-    window = pygame.display.set_mode((Gameconfig.LONGUEUR_LEVEL1, Gameconfig.LARGEUR_LEVEL1)) #, pygame.SCALED | pygame.FULLSCREEN
+    window = pygame.display.set_mode((Gameconfig.LONGUEUR_LEVEL1, Gameconfig.LARGEUR_LEVEL1))
     pygame.display.set_caption("monjeu")
     Gameconfig.init()
     Player.init_sprites()

@@ -14,7 +14,8 @@ class BG (pygame.sprite.Sprite):
                     pygame.image.load("../img_file/ee.png").convert(),
                     pygame.image.load("../img_file/skin2.png").convert(),
                     pygame.image.load("../img_file/jeu.png").convert(),
-                    pygame.image.load("../img_file/ee.png").convert()]
+                    pygame.image.load("../img_file/ee.png").convert(), 
+                    pygame.image.load("../img_file/level_findejeu.png").convert()]
         self.click = 0
         self.start_click = 0
         self.rectbutton = [
@@ -26,6 +27,7 @@ class BG (pygame.sprite.Sprite):
         self.rectporte = [pygame.Rect(2350, 185, 85, 100), #level 1
                           pygame.Rect(2190, 185, 85, 100), #level 2
                           pygame.Rect(2350, 185, 85, 100), #level 3
+                          pygame.Rect(300,200,85,100)
                           #pygame.Rect(2350, 185, 85, 100),
                           #pygame.Rect(2350, 185, 85, 100),
                           #pygame.Rect(2350, 185, 85, 100)

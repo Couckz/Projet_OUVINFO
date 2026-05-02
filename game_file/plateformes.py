@@ -54,3 +54,10 @@ class plateform(pygame.sprite.Sprite):
             
             
 ]
+        
+        self.plateforms_niv4 =  [
+            pygame.Rect(0,300,675, 44),
+            pygame.Rect(400, 220, 150, 20),
+            pygame.Rect(100, 220, 150, 20), 
+            pygame.Rect(250, 150, 150, 20)
+        ]
