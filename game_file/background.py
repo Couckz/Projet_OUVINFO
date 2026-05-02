@@ -14,7 +14,7 @@ class BG (pygame.sprite.Sprite):
                     pygame.image.load("../img_file/ee.png").convert(),
                     pygame.image.load("../img_file/skin2.png").convert(),
                     pygame.image.load("../img_file/jeu.png").convert(),
-                    pygame.image.load("../img_file/playh.png").convert()]
+                    pygame.image.load("../img_file/ee.png").convert()]
         self.click = 0
         self.start_click = 0
         self.rectbutton = [
