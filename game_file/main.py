@@ -22,7 +22,7 @@ def gameloop(window):
     quitting = False
     game_state = Gamestate()
 
-    game_state.bg.counter_niveau = 3
+
     while not quitting : 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
