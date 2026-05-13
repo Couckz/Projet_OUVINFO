@@ -219,8 +219,10 @@ class Gamestate:
             self.bg.counter_niveau = 4
     
     def fin_jeu(self):
-        if -self.seuil >= self.player.rect.x:
-            return True
+        if self.bg.counter_niveau < 3 :
+            if self.player.rect.x + self.seuil <= 0 :
+                return True
+        return False
     
     def ecran_fin_jeu(self, window):
         self.bg.draw_end(window)
