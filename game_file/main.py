@@ -42,7 +42,6 @@ def gameloop(window):
             next_move = get_next_move()
             game_state.advance_state(next_move)
             game_state.draw(window)
-            game_state.move_ennemi()
             game_state.collision()
             game_state.collision_cle()
             if game_state.fin_jeu():
@@ -53,6 +52,7 @@ def gameloop(window):
     
 if __name__ == "__main__":
     pygame.init()
+
     window = pygame.display.set_mode((Gameconfig.LONGUEUR_LEVEL1, Gameconfig.LARGEUR_LEVEL1))
     pygame.display.set_caption("monjeu")
     Gameconfig.init()
