@@ -23,7 +23,7 @@ def countdown(window, message=None):
     font_msg = pygame.font.SysFont("Arial", 20)
     for i in range(3, 0, -1):
         start_time = pygame.time.get_ticks()
-        while pygame.time.get_ticks() - start_time < 1000:
+        while pygame.time.get_ticks() - start_time < 500:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
