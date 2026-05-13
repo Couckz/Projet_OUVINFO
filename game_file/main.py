@@ -42,9 +42,10 @@ def gameloop(window):
     game_state = Gamestate()
     game_state.bg.counter_niveau = 5
     countdown_done = False
+    game_state.collision_cle()
 
 
-    game_state.bg.counter_niveau = 3
+    #game_state.bg.counter_niveau = 3
     
     while not quitting : 
         for event in pygame.event.get():
@@ -79,7 +80,10 @@ def gameloop(window):
                 #quitting = True
             if game_state.bg.counter_niveau != niveau_avant:
                 countdown(window)
-                
+        if game_state.recommencer_niveau:
+            game_state.recommencer_niveau = False
+            countdown(window)
+
         pygame.display.update()
         pygame.time.delay(20)
     
