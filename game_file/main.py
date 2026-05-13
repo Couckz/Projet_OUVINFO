@@ -18,8 +18,9 @@ def get_next_move():
         nextmove.jump = True
     return nextmove
 
-def countdown(window):
+def countdown(window, message=None):
     font = pygame.font.SysFont("Arial", 80, bold=True)
+    font_msg = pygame.font.SysFont("Arial", 20)
     for i in range(3, 0, -1):
         start_time = pygame.time.get_ticks()
         while pygame.time.get_ticks() - start_time < 1000:
@@ -28,6 +29,13 @@ def countdown(window):
                     pygame.quit()
                     quit()
             window.fill((0, 0, 0))
+
+            if message :
+                texte_msg = font_msg.render(message, True, (255, 100, 100))
+                x_msg = Gameconfig.LONGUEUR_LEVEL1 //2 - texte_msg.get_width() // 2
+                window.blit(texte_msg, (x_msg, Gameconfig.LARGEUR_LEVEL1 //4))
+
+
             texte = font.render(str(i), True, (255, 255, 255))
             ombre = font.render(str(i), True, (80,80,80))
             x = Gameconfig.LONGUEUR_LEVEL1 // 2 - texte.get_width() // 2
@@ -79,10 +87,11 @@ def gameloop(window):
                 game_state.ecran_fin_jeu(window)
                 #quitting = True
             if game_state.bg.counter_niveau != niveau_avant:
-                countdown(window)
+                countdown(window, message="Bravo ! Niveau suivant")
+
         if game_state.recommencer_niveau:
             game_state.recommencer_niveau = False
-            countdown(window)
+            countdown(window, message="Dommage, il te manque des clés... Réessaye !")
 
         pygame.display.update()
         pygame.time.delay(20)
