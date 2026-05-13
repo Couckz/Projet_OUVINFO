@@ -18,17 +18,46 @@ def get_next_move():
         nextmove.jump = True
     return nextmove
 
+def countdown(window):
+    font = pygame.font.SysFont("Arial", 80, bold=True)
+    for i in range(3, 0, -1):
+        start_time = pygame.time.get_ticks()
+        while pygame.time.get_ticks() - start_time < 1000:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit()
+            window.fill((0, 0, 0))
+            texte = font.render(str(i), True, (255, 255, 255))
+            ombre = font.render(str(i), True, (80,80,80))
+            x = Gameconfig.LONGUEUR_LEVEL1 // 2 - texte.get_width() // 2
+            y = Gameconfig.LARGEUR_LEVEL1 // 2 - texte.get_height() // 2
+            window.blit(ombre, (x+4, y+4))
+            window.blit(texte, (x,y))
+            pygame.display.update()
+            pygame.time.delay(20)
+
 def gameloop(window):
     quitting = False
     game_state = Gamestate()
+    game_state.bg.counter_niveau = 5
+    countdown_done = False
+
 
 
     while not quitting : 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quitting = True
+
+        niveau_avant = game_state.bg.counter_niveau
+
         if game_state.bg.counter_niveau == 5:
             game_state.debut_jeu(window)
+            if game_state.bg.counter_niveau == 2 and not countdown_done:
+                countdown(window)
+                countdown_done = True
+
         elif game_state.bg.counter_niveau == 3  and game_state.fin_atteinte :
             game_state.dessiner_fin(window)
             if game_state.player.rect.colliderect(game_state.prince.rect) :
@@ -47,6 +76,9 @@ def gameloop(window):
             if game_state.fin_jeu():
                 game_state.ecran_fin_jeu(window)
                 #quitting = True
+            if game_state.bg.counter_niveau != niveau_avant:
+                countdown(window)
+                
         pygame.display.update()
         pygame.time.delay(20)
     
