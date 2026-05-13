@@ -20,19 +20,23 @@ class Gamestate:
         self.bg = BG()
         self.platforms = plateform()
         self.fin_atteinte = False 
-        self.prince = Prince(300, Gameconfig.Y_PLATEFORM - Gameconfig.PRINCE_H)
+        self.prince = Prince(320, 300 - Gameconfig.PRINCE_H)
 
     def advance_state(self, next_move):
         self.player.advance_state(next_move)
-        self.seuil = max(self.seuil+Gameconfig.D_SEUIL, Gameconfig.seuil_max)
+        if self.bg.counter_niveau < 3 :
+            self.seuil = max(self.seuil+Gameconfig.D_SEUIL, Gameconfig.seuil_max)
+
+        if self.bg.counter_niveau == 3 :
+            self.collision_prince()
     
     def draw(self, window):
         self.bg.draw(window, self.seuil)
         self.player.draw(window, self.seuil)
         self.cle.draw(window, self.seuil)
-        pygame.draw.rect(window, (0, 255, 0), (self.bg.rectcle.x, self.bg.rectcle.y, self.bg.rectcle.width, self.bg.rectcle.height), 2) #debogage interface
-        pygame.draw.rect(window, (0, 0, 255), (self.bg.rectporte[self.bg.counter_niveau].x + self.seuil, self.bg.rectporte[self.bg.counter_niveau].y, self.bg.rectporte[self.bg.counter_niveau].width, self.bg.rectporte[self.bg.counter_niveau].height), 2) #debogage interface
-        pygame.draw.rect(window, (0, 255, 0), (self.bg.rectvie.x, self.bg.rectvie.y,  self.bg.rectvie.width, self.bg.rectvie.height), 2)
+        #pygame.draw.rect(window, (0, 255, 0), (self.bg.rectcle.x, self.bg.rectcle.y, self.bg.rectcle.width, self.bg.rectcle.height), 2) #debogage interface
+        #pygame.draw.rect(window, (0, 0, 255), (self.bg.rectporte[self.bg.counter_niveau].x + self.seuil, self.bg.rectporte[self.bg.counter_niveau].y, self.bg.rectporte[self.bg.counter_niveau].width, self.bg.rectporte[self.bg.counter_niveau].height), 2) #debogage interface
+        #pygame.draw.rect(window, (0, 255, 0), (self.bg.rectvie.x, self.bg.rectvie.y,  self.bg.rectvie.width, self.bg.rectvie.height), 2)
         #print("window", self.seuil)
         #print("position x", self.player.rect.x)
         
@@ -59,8 +63,10 @@ class Gamestate:
                 pygame.draw.rect(window, (0, 0, 255), (key.x + self.seuil, key.y, key.width, key.height), 2)
 
         if self.bg.counter_niveau == 3 :
-           window.blit(self.bg.image[8], (0, 0))
            self.prince.draw(window, self.seuil)
+
+           rect_prince_visible = self.prince.rect.copy()
+           rect_prince_visible.x += self.seuil
 
            if self.player.rect.colliderect(self.prince.rect) :
             self.fin_atteinte = True 
@@ -177,25 +183,27 @@ class Gamestate:
                             self.player.vx = 0
         
     def collision_cle(self):
-        if self.cle.counter_clelevel == 0:
-            for cle in self.cle.cles_niv1:
-                if cle.colliderect(self.player.rect):
-                    self.cle.cles_niv1.remove(cle)
-                    self.bg.counter+=1
+
+        if self.bg.counter_niveau <= 3 :
+            if self.cle.counter_clelevel == 0:
+                for cle in self.cle.cles_niv1:
+                    if cle.colliderect(self.player.rect):
+                        self.cle.cles_niv1.remove(cle)
+                        self.bg.counter+=1
         
-        if self.cle.counter_clelevel == 1:
-            for cle in self.cle.cles_niv2:
-                if cle.colliderect(self.player.rect):
-                    self.cle.cles_niv2.remove(cle)
-                    self.bg.counter+=1
+            if self.cle.counter_clelevel == 1:
+                for cle in self.cle.cles_niv2:
+                    if cle.colliderect(self.player.rect):
+                        self.cle.cles_niv2.remove(cle)
+                        self.bg.counter+=1
         
-        if self.cle.counter_clelevel == 2:
-            for cle in self.cle.cles_niv3:
-                if cle.colliderect(self.player.rect):
-                    self.cle.cles_niv3.remove(cle)
-                    self.bg.counter+=1
+            if self.cle.counter_clelevel == 2:
+                for cle in self.cle.cles_niv3:
+                    if cle.colliderect(self.player.rect):
+                        self.cle.cles_niv3.remove(cle)
+                        self.bg.counter+=1
                     
-        if self.bg.rectporte[self.bg.counter_niveau].colliderect(self.player.rect) and self.bg.counter == 3:
+            if self.bg.rectporte[self.bg.counter_niveau].colliderect(self.player.rect) and self.bg.counter == 3:
                 self.bg.counter_niveau+=1
                 self.cle.counter_clelevel+=1
                 self.bg.counter = 0
@@ -203,6 +211,13 @@ class Gamestate:
                 self.player = Player(50)
                 #print("Jeu fini")
         
+    def collision_prince(self) :
+        prince_rect_affichage = self.prince.rect.copy()
+        prince_rect_affichage.x += self.seuil
+        if self.player.rect.colliderect(prince_rect_affichage) :
+            self.fin_atteinte = True
+            self.bg.counter_niveau = 4
+    
     def fin_jeu(self):
         if -self.seuil >= self.player.rect.x:
             return True

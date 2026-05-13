@@ -27,6 +27,7 @@ class BG (pygame.sprite.Sprite):
         self.rectporte = [pygame.Rect(2350, 185, 85, 100), #level 1
                           pygame.Rect(2190, 185, 85, 100), #level 2
                           pygame.Rect(2350, 185, 85, 100), #level 3
+                          pygame.Rect(300,200,85,100),
                           pygame.Rect(300,200,85,100)
                           #pygame.Rect(2350, 185, 85, 100),
                           #pygame.Rect(2350, 185, 85, 100),
@@ -61,27 +62,23 @@ class BG (pygame.sprite.Sprite):
             window.blit(self.image[1],(seuil,0))
         if self.counter_niveau == 2:
             window.blit(self.image[2],(seuil,0))
+        if self.counter_niveau == 3 :
+            window.blit(self.image[8], (seuil,0))
         
         #Dessiner le compteur des vies 
-        if self.vie == 3:
-            window.blit(self.imgvie[0], (self.rectvie.x , self.rectvie.y))
-        if self.vie == 2:
-            window.blit(self.imgvie[1], (self.rectvie.x , self.rectvie.y))
-        if self.vie == 1:
-            window.blit(self.imgvie[2], (self.rectvie.x , self.rectvie.y))
+        if self.counter_niveau < 3 :
+            if self.vie == 3:
+                window.blit(self.imgvie[0], (self.rectvie.x , self.rectvie.y))
+            if self.vie == 2:
+                window.blit(self.imgvie[1], (self.rectvie.x , self.rectvie.y))
+            if self.vie == 1:
+                window.blit(self.imgvie[2], (self.rectvie.x , self.rectvie.y))
         
         
         
         #Dessiner le compteur des clés
-        if self.counter == 0:
-            window.blit(self.imgcle[0], (self.rectcle.x , self.rectcle.y))
-        if self.counter == 1:
-            window.blit(self.imgcle[1], (self.rectcle.x , self.rectcle.y))
-        if self.counter == 2:
-            window.blit(self.imgcle[2], (self.rectcle.x , self.rectcle.y))
-        if self.counter == 3:
-            window.blit(self.imgcle[3], (self.rectcle.x , self.rectcle.y))
-    
+        if self.counter >= 0 and self.counter <= 3 :
+            window.blit(self.imgcle[self.counter], (self.rectcle.x, self.rectcle.y))
 
     def draw_end(self, window):
         self.souris = pygame.mouse.get_pos()
