@@ -63,6 +63,11 @@ class Gamestate:
                 pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 2)
             for key in self.cle.cles_niv3:
                 pygame.draw.rect(window, (0, 0, 255), (key.x + self.seuil, key.y, key.width, key.height), 2)
+                
+        #Debogage, niveau4
+        if self.bg.counter_niveau == 3:
+            for platform in self.platforms.platforms_niv4:
+                pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 2)
 
         # if self.bg.counter_niveau == 3 :
         #    window.blit(self.bg.image[8], (0, 0))
@@ -162,7 +167,7 @@ class Gamestate:
 
         
         if self.bg.counter_niveau == 3  :
-            for platforme in self.platforms.plateforms_niv4 :
+            for platforme in self.platforms.platforms_niv4 :
                 if platforme.colliderect(self.player.rect):
                     if self.player.vy > 0:  # le joueur tombe
                         if self.player.rect.bottom >= platforme.top:
@@ -210,8 +215,9 @@ class Gamestate:
                 print("Jeu fini")
         
     def fin_jeu(self):
-        if -self.seuil >= self.player.rect.x:
-            return True
+        if self.bg.counter_niveau < 3:
+            if -self.seuil >= self.player.rect.x:
+                return True
     
     def ecran_fin_jeu(self, window):
         self.bg.draw_end(window)
@@ -233,7 +239,7 @@ class Gamestate:
             if self.bg.start_click >= 1:
                 self.player = Player(80)
                 self.cle = Cle() 
-                self.bg.counter_niveau = 0 ##A mettre à 3 pour se rendre directement à la scène du prince
+                self.bg.counter_niveau = 3 ##A mettre à 3 pour se rendre directement à la scène du prince
                 self.bg.counter = 0
                 self.bg.start = 0
                 self.cle.counter_clelevel = 0
