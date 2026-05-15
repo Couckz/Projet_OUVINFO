@@ -49,15 +49,13 @@ class plateform(pygame.sprite.Sprite):
             pygame.Rect(1730, 155, 10, 90),
             pygame.Rect(1820, 95, 110, 20),
             pygame.Rect(1920, 95, 20, 200),
-            pygame.Rect(2210, 265, 25, 100),
+            pygame.Rect(2200, 260, 20, 100),
             pygame.Rect(2225, 250, 110, 20),
             
             
 ]
         
         self.plateforms_niv4 =  [
-            pygame.Rect(0,300,675, 44),
-            pygame.Rect(400, 220, 150, 20),
-            pygame.Rect(100, 220, 150, 20), 
-            pygame.Rect(250, 150, 150, 20)
+            pygame.Rect(700,300,675, 44),
+            
         ]

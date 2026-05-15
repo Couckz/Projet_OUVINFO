@@ -2,7 +2,7 @@ import pygame
 
 class Cle:
     def __init__(self):
-        self.counter_clelevel = 0
+        self.counter_clelevel = 0 #Variable qui sert pour dessiner les clés
         
         self.cles_niv1 = [
             pygame.Rect(840, 150, 50, 20), #cle1
@@ -23,7 +23,7 @@ class Cle:
         ]
         self.img = pygame.image.load("../img_file/clered.png")
     
-    #surface.blit(image, (x,y))
+    #note, pour dessiner sur une surfac e: surface.blit(image, (x,y))
     def draw(self, window, seuil):
         if self.counter_clelevel == 0:
             for cle in self.cles_niv1:

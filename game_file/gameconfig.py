@@ -85,5 +85,3 @@ class Gameconfig:
         for im in Gameconfig.STANDING_IMG :
             Gameconfig.STANDING_MASK.append(pygame.mask.from_surface(im))
         
-        # __________________________ENNEMIS
-        
