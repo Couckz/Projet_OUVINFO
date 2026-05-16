@@ -22,19 +22,27 @@ def gameloop(window):
     quitting = False
     game_state = Gamestate()
     while not quitting : 
+        # if game_state.just_changed_level:
+        #     game_state.just_changed_level = True
+        #     continue
+    
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quitting = True
         if game_state.bg.counter_niveau == 5:
             game_state.debut_jeu(window)
         else :
+            if game_state.just_changed_level == True:
+                game_state.changement_niveau()
             next_move = get_next_move()
-            game_state.collision()
             game_state.advance_state(next_move)
-            game_state.draw(window)
-            #game_state.collision()
+            game_state.collision()
             game_state.collision_cle()
-            if game_state.fin_jeu():
+            game_state.draw(window)
+            if game_state.state == "playing":
+                if game_state.fin_jeu():
+                    game_state.state = "gameover"
+            if game_state.state == "gameover":
                 game_state.ecran_fin_jeu(window)
                 #quitting = True
         pygame.display.update()

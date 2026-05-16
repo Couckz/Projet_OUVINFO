@@ -12,7 +12,8 @@ from cle import Cle
 #Centralise la gestion
 class Gamestate: 
     def __init__(self):
-        self.just_changed_level = True
+        self.just_changed_level = False
+        self.state = "playing" 
         self.game = Gameconfig()
         self.player = Player(80)
         self.cle = Cle()
@@ -25,6 +26,9 @@ class Gamestate:
         # self.prince = Prince(300, Gameconfig.Y_PLATEFORM - Gameconfig.PRINCE_H)
 
     def advance_state(self, next_move):
+        if self.just_changed_level:
+            self.just_changed_level = False
+            return
         self.player.advance_state(next_move)
         print(self.seuil)
         if self.bg.counter_niveau < 3:
@@ -211,42 +215,37 @@ class Gamestate:
                 if cle.colliderect(self.player.rect):
                     self.cle.cles_niv3.remove(cle)
                     self.bg.counter+=1
-                    
+        
         if self.bg.rectporte[self.bg.counter_niveau].colliderect(self.player.rect) and self.bg.counter == 3:
-                # self.player.vx = 0
-                # self.player.vy = 0
-                self.bg.counter_niveau+=1
-                self.cle.counter_clelevel+=1
-                self.player = Player(50)
-                self.player.vx = 0
-                self.player.vy = 0
-                self.player.on_ground = False
-                # self.bg.counter = 0
-                # self.seuil = 0
-                # self.player = Player(50)
-                print("Jeu fini")
+                self.just_changed_level = True
+    
+    def changement_niveau(self):
+        self.state = "transition"
+        #self.player = Player(50)
+        self.bg.counter_niveau += 1
+        self.cle.counter_clelevel += 1
+        self.player.rect.x = 80   # ou spawn safe du niveau
+        self.player.rect.y = 200 
+        self.seuil = 0
+        self.player.vx = 0
+        self.player.vy = 0
+        #self.player.on_ground = True
         
     def fin_jeu(self):
+        if self.state != "playing":
+            return False
         if self.bg.counter_niveau < 3:
-            if self.player.rect.x + self.seuil <= 0:
-                print(
-                    "world_x =", self.player.rect.x,
-                    "seuil =", self.seuil,
-                    "screen_x =", self.player.rect.x + self.seuil
-                    )
-                porte = self.bg.rectporte[self.bg.counter_niveau]
-                print("PLAYER", self.player.rect)
-                print("PORTE", porte)
-                print("SEUIL", self.seuil)
-                return True
+                if self.player.rect.x + self.seuil < 0:
+                    return True
             # if -self.seuil >= self.player.rect.x:
-            #     return True
+            
     
     def ecran_fin_jeu(self, window):
         self.bg.draw_end(window)
         #Debug NE PAS TOUCHER
         pygame.draw.rect(window, (0, 0, 255), (self.bg.rectbutton[0].x, self.bg.rectbutton[0].y, self.bg.rectbutton[0].width, self.bg.rectbutton[0].height), 2)
         if self.bg.click >= 1:
+            self.state = "playing" 
             self.player = Player(80)
             self.cle = Cle() 
             self.bg.counter_niveau = 0
