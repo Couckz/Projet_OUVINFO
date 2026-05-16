@@ -12,6 +12,7 @@ from cle import Cle
 #Centralise la gestion
 class Gamestate: 
     def __init__(self):
+        self.just_changed_level = True
         self.game = Gameconfig()
         self.player = Player(80)
         self.cle = Cle()
@@ -29,6 +30,7 @@ class Gamestate:
         if self.bg.counter_niveau < 3:
             self.seuil = max(self.seuil+Gameconfig.D_SEUIL, Gameconfig.seuil_max)
             print("counteur", self.bg.counter_niveau)
+            print("position joueur", self.player.rect.x)
         else:
             print("counteur", self.bg.counter_niveau)
             self.seuil = 0
@@ -102,90 +104,94 @@ class Gamestate:
     def collision(self):
         #self.player.on_ground = False
         if self.bg.counter_niveau == 0:
-            for platforme in self.platforms.platforms_niv1:
-                if platforme.colliderect(self.player.rect):
-                    if self.player.vy > 0:  # le joueur tombe
-                        if self.player.rect.bottom >= platforme.top:
-                            self.player.rect.bottom = platforme.top
-                            self.player.vy = 0
-                            self.player.on_ground = True
-                        
-                    elif self.player.vy < 0:  # le joueur monte
-                        if self.player.rect.top <= platforme.bottom:
-                            self.player.rect.top = platforme.bottom
-                            self.player.vy = 0
-                        
+                platforms = self.platforms.platforms_niv1
+                self.player.rect.x += self.player.vx * Gameconfig.DT
+                for platforme in platforms:
                     if self.player.rect.colliderect(platforme):
-                        if self.player.vx > 0:  # vers la droite
+                        if self.player.vx > 0:
                             self.player.rect.right = platforme.left
-                            self.player.vx = 0
-                        elif self.player.vx < 0:  # vers la gauche
+                        elif self.player.vx < 0:
                             self.player.rect.left = platforme.right
-                            self.player.vx = 0
-        
-        if self.bg.counter_niveau == 1:
-            for platforme in self.platforms.platforms_niv2:
-                if platforme.colliderect(self.player.rect):
-                    if self.player.vy > 0:  # le joueur tombe
-                        if self.player.rect.bottom >= platforme.top:
-                            self.player.rect.bottom = platforme.top
-                            self.player.vy = 0
-                            self.player.on_ground = True
-                        
-                    elif self.player.vy < 0:  # le joueur monte
-                        if self.player.rect.top <= platforme.bottom:
-                            self.player.rect.top = platforme.bottom
-                            self.player.vy = 0
-                        
-                    if self.player.rect.colliderect(platforme):
-                        if self.player.vx > 0:  # vers la droite
-                            self.player.rect.right = platforme.left
-                        elif self.player.vx < 0:  # vers la gauche
-                            self.player.rect.left = platforme.right
-                            self.player.vx = 0
-        
-        if self.bg.counter_niveau == 2:
-            for platforme in self.platforms.platforms_niv3:
-                if platforme.colliderect(self.player.rect):
-                    if self.player.vy > 0:  # le joueur tombe
-                        if self.player.rect.bottom >= platforme.top:
-                            self.player.rect.bottom = platforme.top
-                            self.player.vy = 0
-                            self.player.on_ground = True
-                        
-                    elif self.player.vy < 0:  # le joueur monte
-                        if self.player.rect.top <= platforme.bottom:
-                            self.player.rect.top = platforme.bottom
-                            self.player.vy = 0
-                        
-                    if self.player.rect.colliderect(platforme):
-                        if self.player.vx > 0:  # vers la droite
-                            self.player.rect.right = platforme.left
-                        elif self.player.vx < 0:  # vers la gauche
-                            self.player.rect.left = platforme.right
-                            self.player.vx = 0
 
-        
-        if self.bg.counter_niveau == 3  :
-            for platforme in self.platforms.platforms_niv4 :
-                if platforme.colliderect(self.player.rect):
-                    if self.player.vy > 0:  # le joueur tombe
-                        if self.player.rect.bottom >= platforme.top:
+                self.player.rect.y += self.player.vy * Gameconfig.DT
+                self.player.on_ground = False
+                for platforme in platforms:
+                    if self.player.rect.colliderect(platforme):
+                        if self.player.vy > 0:
                             self.player.rect.bottom = platforme.top
                             self.player.vy = 0
                             self.player.on_ground = True
-                        
-                    elif self.player.vy < 0:  # le joueur monte
-                        if self.player.rect.top <= platforme.bottom:
+                        elif self.player.vy < 0:
                             self.player.rect.top = platforme.bottom
                             self.player.vy = 0
-                        
+            
+        if self.bg.counter_niveau == 1:
+                platforms = self.platforms.platforms_niv2
+                self.player.rect.x += self.player.vx * Gameconfig.DT
+                for platforme in platforms:
                     if self.player.rect.colliderect(platforme):
-                        if self.player.vx > 0:  # vers la droite
+                        if self.player.vx > 0:
                             self.player.rect.right = platforme.left
-                        elif self.player.vx < 0:  # vers la gauche
+                        elif self.player.vx < 0:
                             self.player.rect.left = platforme.right
-                            self.player.vx = 0
+
+                self.player.rect.y += self.player.vy * Gameconfig.DT
+                self.player.on_ground = False
+                for platforme in platforms:
+                    if self.player.rect.colliderect(platforme):
+                        if self.player.vy > 0:
+                            self.player.rect.bottom = platforme.top
+                            self.player.vy = 0
+                            self.player.on_ground = True
+                        elif self.player.vy < 0:
+                            self.player.rect.top = platforme.bottom
+                            self.player.vy = 0
+                            
+        if self.bg.counter_niveau == 2:
+                platforms = self.platforms.platforms_niv3
+                self.player.rect.x += self.player.vx * Gameconfig.DT
+                for platforme in platforms:
+                    if self.player.rect.colliderect(platforme):
+                        if self.player.vx > 0:
+                            self.player.rect.right = platforme.left
+                        elif self.player.vx < 0:
+                            self.player.rect.left = platforme.right
+
+                self.player.rect.y += self.player.vy * Gameconfig.DT
+                self.player.on_ground = False
+                for platforme in platforms:
+                    if self.player.rect.colliderect(platforme):
+                        if self.player.vy > 0:
+                            self.player.rect.bottom = platforme.top
+                            self.player.vy = 0
+                            self.player.on_ground = True
+                        elif self.player.vy < 0:
+                            self.player.rect.top = platforme.bottom
+                            self.player.vy = 0     
+        
+        if self.bg.counter_niveau == 3:
+                platforms = self.platforms.platforms_niv4
+                self.player.rect.x += self.player.vx * Gameconfig.DT
+                for platforme in platforms:
+                    if self.player.rect.colliderect(platforme):
+                        if self.player.vx > 0:
+                            self.player.rect.right = platforme.left
+                        elif self.player.vx < 0:
+                            self.player.rect.left = platforme.right
+
+                self.player.rect.y += self.player.vy * Gameconfig.DT
+                self.player.on_ground = False
+                for platforme in platforms:
+                    if self.player.rect.colliderect(platforme):
+                        if self.player.vy > 0:
+                            self.player.rect.bottom = platforme.top
+                            self.player.vy = 0
+                            self.player.on_ground = True
+                        elif self.player.vy < 0:
+                            self.player.rect.top = platforme.bottom
+                            self.player.vy = 0
+                
+
         
     def collision_cle(self):
         if self.cle.counter_clelevel == 0:
@@ -207,17 +213,34 @@ class Gamestate:
                     self.bg.counter+=1
                     
         if self.bg.rectporte[self.bg.counter_niveau].colliderect(self.player.rect) and self.bg.counter == 3:
+                # self.player.vx = 0
+                # self.player.vy = 0
                 self.bg.counter_niveau+=1
                 self.cle.counter_clelevel+=1
-                self.bg.counter = 0
-                self.seuil = 0
                 self.player = Player(50)
+                self.player.vx = 0
+                self.player.vy = 0
+                self.player.on_ground = False
+                # self.bg.counter = 0
+                # self.seuil = 0
+                # self.player = Player(50)
                 print("Jeu fini")
         
     def fin_jeu(self):
         if self.bg.counter_niveau < 3:
-            if -self.seuil >= self.player.rect.x:
+            if self.player.rect.x + self.seuil <= 0:
+                print(
+                    "world_x =", self.player.rect.x,
+                    "seuil =", self.seuil,
+                    "screen_x =", self.player.rect.x + self.seuil
+                    )
+                porte = self.bg.rectporte[self.bg.counter_niveau]
+                print("PLAYER", self.player.rect)
+                print("PORTE", porte)
+                print("SEUIL", self.seuil)
                 return True
+            # if -self.seuil >= self.player.rect.x:
+            #     return True
     
     def ecran_fin_jeu(self, window):
         self.bg.draw_end(window)
@@ -239,7 +262,7 @@ class Gamestate:
             if self.bg.start_click >= 1:
                 self.player = Player(80)
                 self.cle = Cle() 
-                self.bg.counter_niveau = 3 ##A mettre à 3 pour se rendre directement à la scène du prince
+                self.bg.counter_niveau = 0 ##A mettre à 3 pour se rendre directement à la scène du prince
                 self.bg.counter = 0
                 self.bg.start = 0
                 self.cle.counter_clelevel = 0

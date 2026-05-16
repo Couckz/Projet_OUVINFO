@@ -18,10 +18,10 @@ class Gameconfig:
     ENNEMIS_W = 40 
     ENNEMIS_H = 64 
     DT = 0.5
-    FORCE_LEFT = -20
+    FORCE_LEFT = -10 #20
     FORCE_RIGHT = -FORCE_LEFT
     GRAVITY = 9.81
-    FORCE_JUMP = -95 #-100
+    FORCE_JUMP = -50 #-100
     PRINCESSE = None
     STANDING_MASK = None
     WALK_RIGHT_IMG = []
