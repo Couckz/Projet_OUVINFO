@@ -107,6 +107,8 @@ class Gamestate:
             
     def collision(self):
         #self.player.on_ground = False
+        print("on_ground:", self.player.on_ground)
+        print("level:", self.bg.counter_niveau)
         if self.bg.counter_niveau == 0:
                 platforms = self.platforms.platforms_niv1
                 self.player.rect.x += self.player.vx * Gameconfig.DT
@@ -218,18 +220,23 @@ class Gamestate:
         
         if self.bg.rectporte[self.bg.counter_niveau].colliderect(self.player.rect) and self.bg.counter == 3:
                 self.just_changed_level = True
+                self.bg.counter_niveau += 1
+                self.cle.counter_clelevel += 1
+                self.bg.counter = 0
     
     def changement_niveau(self):
         self.state = "transition"
         #self.player = Player(50)
-        self.bg.counter_niveau += 1
-        self.cle.counter_clelevel += 1
-        self.player.rect.x = 80   # ou spawn safe du niveau
-        self.player.rect.y = 200 
+        # self.bg.counter_niveau += 1
+        # self.cle.counter_clelevel += 1
+        time.sleep(0.001)
+        Gameconfig.GRAVITY = 0
+        self.player = Player(80)
+        self.player.rect.y = 170
         self.seuil = 0
         self.player.vx = 0
         self.player.vy = 0
-        #self.player.on_ground = True
+        
         
     def fin_jeu(self):
         if self.state != "playing":
@@ -270,24 +277,3 @@ class Gamestate:
             pygame.draw.rect(window, (0, 0, 255), (self.bg.rectbutton[1].x, self.bg.rectbutton[1].y, self.bg.rectbutton[1].width, self.bg.rectbutton[1].height), 2)
         
 
-    # def dessiner_fin(self, window) :
-    #     overlay = pygame.Surface((Gameconfig.WINDOW_W, Gameconfig.WINDOW_H), pygame.SRCALPHA)
-    #     overlay.fill((0,0,0,150))
-    #     window.blit(overlay, (0,0))
-    #     texte_victoire = Gameconfig.FONT_FIN.render("Le Prince est délivré !", True, (255,215,0))
-    #     texte_sous_titre = Gameconfig.FONT_PETITE.render ("Félicitation, vous avez gagné !", True, (255,255,255))
-    #     rect_victoire = texte_victoire.get_rect(center=(Gameconfig.WINDOW_W//2, Gameconfig.WINDOW_H//2-40))
-    #     rect_sous_titre = texte_sous_titre.get_rect(center=(Gameconfig.WINDOW_W//2, Gameconfig.WINDOW_H//20+20))
-    #     window.blit(texte_victoire, rect_victoire)
-    #     window.blit(texte_sous_titre, rect_sous_titre)
-    #     bouton_rect = pygame.Rect(Gameconfig.WINDOW_W//2-100, Gameconfig.WINDOW_H//2+60, 200, 50)
-    #     pygame.draw.rect(window, (255,255,255), bouton_rect, 2)
-    #     texte_rejouer = Gameconfig.FONT_PETITE.render("Cliquez pour Rejouer", True, (255,255,255))
-    #     rect_texte_btn = texte_rejouer.get_rect(center=bouton_rect.center)
-    #     window.blit(texte_rejouer, rect_texte_btn)
-    #     souris = pygame.mouse.get_pos()
-    #     if bouton_rect.collidepoint(souris) :
-    #         pygame.draw.rect(window, (255,255,255), bouton_rect)
-    #         window.blit(Gameconfig.FONT_PETITE.render("Cliquez pour Rejouer", True, (0,0,0)), rect_texte_btn)
-    #         if pygame.mouse.get_pressed()[0] :
-    #             self.__init__()

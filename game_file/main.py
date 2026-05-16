@@ -34,6 +34,8 @@ def gameloop(window):
         else :
             if game_state.just_changed_level == True:
                 game_state.changement_niveau()
+            Gameconfig.GRAVITY = 9.81
+            game_state.state = "playing"
             next_move = get_next_move()
             game_state.advance_state(next_move)
             game_state.collision()
