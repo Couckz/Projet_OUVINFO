@@ -226,10 +226,9 @@ class Gamestate:
         if self.bg.counter_niveau == 5:
             self.bg.draw_start(window)
             if self.bg.start_click >= 1:
-                self.bg.flag = False
                 self.player = Player(80)
                 self.cle = Cle() 
-                self.bg.counter_niveau = 3 ##A mettre à 3 pour se rendre directement à la scène du prince
+                self.bg.counter_niveau = 0 ##A mettre à 3 pour se rendre directement à la scène du prince
                 self.bg.counter = 0
                 self.bg.start = 0
                 self.cle.counter_clelevel = 0
@@ -249,14 +248,17 @@ class Gamestate:
         window.blit(self.bg.image[9], (0,0))
         window.blit(self.bg.image[10], (self.bg.rectbutton[1].x, self.bg.rectbutton[1].y))
         pygame.draw.rect(window, (0, 0, 255), (self.bg.rectbutton[1].x, self.bg.rectbutton[1].y, self.bg.rectbutton[1].width, self.bg.rectbutton[1].height), 2)
-        # if self.bg.rectbutton[1].collidepoint(self.souris):
-        #         window.blit(self.bg.image[7], (self.bg.rectbutton[1].x, self.bg.rectbutton[1].y))
         if pygame.mouse.get_pressed()[0]:  
                 if self.bg.rectbutton[1].collidepoint(pygame.mouse.get_pos()):
-                    print("click")
-                    self.bg.counter_niveau = 5
-                    #self.flag = True
-                    self.debut_jeu(window)
+                    self.player = Player(80)
+                    self.cle = Cle() 
+                    self.bg.counter_niveau = 0 ##A mettre à 3 pour se rendre directement à la scène du prince
+                    self.bg.counter = 0
+                    self.bg.start = 0
+                    self.cle.counter_clelevel = 0
+                    self.seuil = 0
+                    self.bg.click = 0
+                    self.bg.start_click = 0
                     
     
 
