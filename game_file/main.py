@@ -36,14 +36,26 @@ def gameloop(window):
                 game_state.changement_niveau()
             Gameconfig.GRAVITY = 9.81
             game_state.state = "playing"
-            next_move = get_next_move()
-            game_state.advance_state(next_move)
-            game_state.collision()
-            game_state.collision_cle()
-            game_state.draw(window)
+            # next_move = get_next_move()
+            # game_state.advance_state(next_move)
+            # game_state.collision()
+            # game_state.collision_cle()
+            # game_state.draw(window)
             if game_state.state == "playing":
                 if game_state.fin_jeu():
                     game_state.state = "gameover"
+                else:
+                    if game_state.ending():
+                        game_state.message_fin(window)
+                    else:
+                        next_move = get_next_move()
+                        game_state.advance_state(next_move)
+                        game_state.collision()
+                        game_state.collision_cle()
+                        game_state.ending()
+                        game_state.draw(window)
+                        
+                
             if game_state.state == "gameover":
                 game_state.ecran_fin_jeu(window)
                 #quitting = True

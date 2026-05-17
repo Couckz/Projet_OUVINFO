@@ -6,6 +6,7 @@ from gameconfig import Gameconfig
 
 class BG (pygame.sprite.Sprite):
     def __init__(self):
+        
         self.counter_niveau = 5 #Variable qui sert à compter les niveaux et pour l'affichage
         self.image = [pygame.image.load("../img_file/niv.png").convert(),
                     pygame.image.load("../img_file/l.png").convert(),
@@ -17,13 +18,14 @@ class BG (pygame.sprite.Sprite):
                     pygame.image.load("../img_file/final.png").convert_alpha(),
                     pygame.image.load("../img_file/level_findejeu.png").convert(),
                     pygame.image.load("../img_file/image_fin.png").convert(),
-                    pygame.image.load("../img_file/bouton_fin.png").convert()]
+                    pygame.image.load("../img_file/bouton_fin4.png").convert()]
         self.click = 0
         self.start_click = 0
         self.rectbutton = [
             pygame.Rect(200, 180, 250, 70),
             pygame.Rect(225, 160, 220, 80),
-            pygame.Rect(215,160,240,100)
+            pygame.Rect(215,160,240,100),
+            pygame.Rect(215,160,240,100), #Rectangle avec le prince
         ]
         self.counter = 0 #Variable qui sert pour l'affichage du compteur des clés
         
@@ -72,8 +74,6 @@ class BG (pygame.sprite.Sprite):
         if self.counter_niveau == 3:
             window.blit(self.image[8], (seuil, 0))
         
-        if self.counter_niveau == 4 :
-            window.blit(self.image[9], (seuil, 0))
         
         #Dessiner le compteur des clés
         if self.counter_niveau < 3:
@@ -99,13 +99,13 @@ class BG (pygame.sprite.Sprite):
                     if self.rectbutton[0].collidepoint(pygame.mouse.get_pos()):
                         self.click+=1
     
-    def draw_start(self, window):
-        self.souris = pygame.mouse.get_pos()
+    def draw_start(self, window,souris):
         window.blit(self.image[6], (0,0))
         window.blit(self.image[7], (self.rectbutton[1].x, self.rectbutton[1].y))
-        if self.rectbutton[0].collidepoint(self.souris):
+        if self.rectbutton[0].collidepoint(souris):
                 window.blit(self.image[7], (self.rectbutton[1].x, self.rectbutton[1].y))
                 if pygame.mouse.get_pressed()[0]:  
-                    print(self.image[7].get_size())
                     if self.rectbutton[0].collidepoint(pygame.mouse.get_pos()):
                         self.start_click +=1
+                        
+    
