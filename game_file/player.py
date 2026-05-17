@@ -34,11 +34,7 @@ class Player(pygame.sprite.Sprite):
     
     #Récupérer le prochain état du joueur
     def advance_state(self, next_move):
-        
         fx = 0
-        # =====================
-        # AXE X
-        # =====================
         if next_move.left:
             fx = Gameconfig.FORCE_LEFT
             self.direction = Player.LEFT
@@ -53,26 +49,11 @@ class Player(pygame.sprite.Sprite):
         self.vx = fx
         self.vx = min(self.vx, vx_max)
         self.vx = max(self.vx, vx_min)
-        # =====================
-        # SAUT
-        # =====================
         if next_move.jump and self.on_ground:
             self.vy = Gameconfig.FORCE_JUMP
             self.on_ground = False
-        # =====================
-        # GRAVITÉ
-        # =====================
         self.vy = self.vy + Gameconfig.GRAVITY * Gameconfig.DT
-                
-        
-        # ###Gestion de l'axe vertical
-        # if next_move.jump and self.on_ground:
-        #     fy = Gameconfig.FORCE_JUMP
-        #     self.vy = fy * Gameconfig.DT
-        #     self.on_ground = False  # Quitte le sol suite au saut
-        # else:
-        #     self.vy = self.vy + Gameconfig.GRAVITY * Gameconfig.DT  
-
+            
         if self.sprite_count >= Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER*len(Player.IMAGES[self.direction]) : 
             self.sprite_count=0
         time.sleep(0.001) #0.001
@@ -80,9 +61,6 @@ class Player(pygame.sprite.Sprite):
         frame_index = (self.sprite_count// Gameconfig.NB_FRAMES_PER_SPRITE_PLAYER)%num_images
         self.image = Player.IMAGES[self.direction][frame_index]
         self.mask = Player.MASKS[self.direction][frame_index]
-        # vy_max = (Gameconfig.Y_PLATEFORM-Gameconfig.PLAYER_H-fy)/Gameconfig.DT
-        # self.vy = min(self.vy, vy_max)
-        #self.rect = self.rect.move(self.vx*Gameconfig.DT, self.vy*Gameconfig.DT)
         self.sprite_count+=1
         
 

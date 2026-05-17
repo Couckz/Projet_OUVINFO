@@ -6,10 +6,7 @@ from move import Move
 from background import BG
 from plateformes import plateform 
 from cle import Cle
-#from prince import Prince
-#from ennemis import Ennemis
-#Dessiner qd est ce qu'on s'arrête 
-#Centralise la gestion
+
 class Gamestate: 
     def __init__(self):
         self.just_changed_level = False
@@ -17,13 +14,11 @@ class Gamestate:
         self.game = Gameconfig()
         self.player = Player(80)
         self.cle = Cle()
-        #self.ennemi = Ennemis()
         self.seuil = 0
         self.bg = BG()
         self.platforms = plateform()
         self.fin_atteinte = False 
-        #
-        # self.prince = Prince(300, Gameconfig.Y_PLATEFORM - Gameconfig.PRINCE_H)
+        
 
     def advance_state(self, next_move):
         if self.just_changed_level:

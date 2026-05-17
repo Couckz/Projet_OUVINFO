@@ -10,7 +10,7 @@ class BG (pygame.sprite.Sprite):
         self.counter_niveau = 5 #Variable qui sert à compter les niveaux et pour l'affichage
         self.image = [pygame.image.load("../img_file/niv.png").convert(),
                     pygame.image.load("../img_file/l.png").convert(),
-                    pygame.image.load("../img_file/level.png").convert(),
+                    pygame.image.load("../img_file/level_33.png").convert(),
                     pygame.image.load("../img_file/perdu.png").convert(),
                     pygame.image.load("../img_file/ee.png").convert(),
                     pygame.image.load("../img_file/skin2.png").convert(),
@@ -32,11 +32,8 @@ class BG (pygame.sprite.Sprite):
         self.rectcle = pygame.Rect(20, 10, 130, 70)
         self.rectporte = [pygame.Rect(2350, 185, 85, 100), #level 1
                           pygame.Rect(2190, 185, 85, 100), #level 2
-                          pygame.Rect(2350, 185, 85, 100), #level 3
+                          pygame.Rect(2290, 185, 85, 100), #level 3
                           pygame.Rect(310,220,40,64), #Pour le prince
-                          #pygame.Rect(2350, 185, 85, 100),
-                          #pygame.Rect(2350, 185, 85, 100),
-                          #pygame.Rect(2350, 185, 85, 100)
                           ]
         self.imgcle = [
             pygame.image.load("../img_file/cle0.png"),
