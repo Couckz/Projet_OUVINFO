@@ -40,8 +40,6 @@ class Gameconfig:
     
     def init():
         pygame.font.init()
-        Gameconfig.FONT_FIN = pygame.font.SysFont("Arial", 50)
-        Gameconfig.FONT_PETITE = pygame.font.SysFont("Ariel", 20)
         Gameconfig.BACKGROUND_LEVEL1 = pygame.image.load("../img_file/niv.png")
         Gameconfig.BACKGROUND_LEVEL2 = pygame.image.load("../img_file/level2.jpg")
         Gameconfig.BACKGROUND_LEVEL3 = pygame.image.load("../img_file/level3.jpeg")
