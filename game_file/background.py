@@ -28,7 +28,7 @@ class BG (pygame.sprite.Sprite):
         self.rectporte = [pygame.Rect(2350, 185, 85, 100), #level 1
                           pygame.Rect(2190, 185, 85, 100), #level 2
                           pygame.Rect(2350, 185, 85, 100), #level 3
-                          pygame.Rect(310,220,40,64) #Pour le prince
+                          pygame.Rect(310,220,40,64), #Pour le prince
                           #pygame.Rect(2350, 185, 85, 100),
                           #pygame.Rect(2350, 185, 85, 100),
                           #pygame.Rect(2350, 185, 85, 100)
