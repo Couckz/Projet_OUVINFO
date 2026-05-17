@@ -35,34 +35,34 @@ class Gamestate:
         self.player.draw(window, self.seuil)
         self.cle.draw(window, self.seuil)
         
-        pygame.draw.rect(window, (0, 255, 0), (self.bg.rectcle.x, self.bg.rectcle.y, self.bg.rectcle.width, self.bg.rectcle.height), 2) #debogage interface
-        pygame.draw.rect(window, (0, 0, 255), (self.bg.rectporte[self.bg.counter_niveau].x + self.seuil, self.bg.rectporte[self.bg.counter_niveau].y, self.bg.rectporte[self.bg.counter_niveau].width, self.bg.rectporte[self.bg.counter_niveau].height), 2) #debogage interface
+        # pygame.draw.rect(window, (0, 255, 0), (self.bg.rectcle.x, self.bg.rectcle.y, self.bg.rectcle.width, self.bg.rectcle.height), 2) #debogage interface
+        # pygame.draw.rect(window, (0, 0, 255), (self.bg.rectporte[self.bg.counter_niveau].x + self.seuil, self.bg.rectporte[self.bg.counter_niveau].y, self.bg.rectporte[self.bg.counter_niveau].width, self.bg.rectporte[self.bg.counter_niveau].height), 2) #debogage interface
         
         
-        #Debogage, niveau 1
-        if self.bg.counter_niveau == 0:
-            for platform in self.platforms.platforms_niv1:
-                pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 2)
-            for key in self.cle.cles_niv1:
-                pygame.draw.rect(window, (0, 0, 255), (key.x + self.seuil, key.y, key.width, key.height), 2)
-        #Debogage, niveau 2
-        if self.bg.counter_niveau == 1:
-            for platform in self.platforms.platforms_niv2:
-                pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 2)
-            for key in self.cle.cles_niv2:
-                pygame.draw.rect(window, (0, 0, 255), (key.x + self.seuil, key.y, key.width, key.height), 2)
+        # #Debogage, niveau 1
+        # if self.bg.counter_niveau == 0:
+        #     for platform in self.platforms.platforms_niv1:
+        #         pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 2)
+        #     for key in self.cle.cles_niv1:
+        #         pygame.draw.rect(window, (0, 0, 255), (key.x + self.seuil, key.y, key.width, key.height), 2)
+        # #Debogage, niveau 2
+        # if self.bg.counter_niveau == 1:
+        #     for platform in self.platforms.platforms_niv2:
+        #         pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 2)
+        #     for key in self.cle.cles_niv2:
+        #         pygame.draw.rect(window, (0, 0, 255), (key.x + self.seuil, key.y, key.width, key.height), 2)
         
-        #Debogage, niveau3
-        if self.bg.counter_niveau == 2:
-            for platform in self.platforms.platforms_niv3:
-                pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 2)
-            for key in self.cle.cles_niv3:
-                pygame.draw.rect(window, (0, 0, 255), (key.x + self.seuil, key.y, key.width, key.height), 2)
+        # #Debogage, niveau3
+        # if self.bg.counter_niveau == 2:
+        #     for platform in self.platforms.platforms_niv3:
+        #         pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 2)
+        #     for key in self.cle.cles_niv3:
+        #         pygame.draw.rect(window, (0, 0, 255), (key.x + self.seuil, key.y, key.width, key.height), 2)
                 
-        #Debogage, niveau4
-        if self.bg.counter_niveau == 3:
-            for platform in self.platforms.platforms_niv4:
-                pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 2)
+        # #Debogage, niveau4
+        # if self.bg.counter_niveau == 3:
+        #     for platform in self.platforms.platforms_niv4:
+        #         pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 2)
             
             
 
@@ -230,7 +230,7 @@ class Gamestate:
                 self.seuil = 0
                 self.bg.click = 0
                 self.bg.start_click = 0
-            pygame.draw.rect(window, (0, 0, 255), (self.bg.rectbutton[1].x, self.bg.rectbutton[1].y, self.bg.rectbutton[1].width, self.bg.rectbutton[1].height), 2)
+            #pygame.draw.rect(window, (0, 0, 255), (self.bg.rectbutton[1].x, self.bg.rectbutton[1].y, self.bg.rectbutton[1].width, self.bg.rectbutton[1].height), 2)
     
     def ending(self):
         if self.bg.counter_niveau == 3:
@@ -242,7 +242,7 @@ class Gamestate:
         self.souris = pygame.mouse.get_pos()
         window.blit(self.bg.image[9], (0,0))
         window.blit(self.bg.image[10], (self.bg.rectbutton[1].x, self.bg.rectbutton[1].y))
-        pygame.draw.rect(window, (0, 0, 255), (self.bg.rectbutton[1].x, self.bg.rectbutton[1].y, self.bg.rectbutton[1].width, self.bg.rectbutton[1].height), 2)
+        #pygame.draw.rect(window, (0, 0, 255), (self.bg.rectbutton[1].x, self.bg.rectbutton[1].y, self.bg.rectbutton[1].width, self.bg.rectbutton[1].height), 2)
         if pygame.mouse.get_pressed()[0]:  
                 if self.bg.rectbutton[1].collidepoint(pygame.mouse.get_pos()):
                     self.player = Player(80)

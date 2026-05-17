@@ -29,7 +29,7 @@ class Player(pygame.sprite.Sprite):
         if screen_x > Gameconfig.WINDOW_W - Gameconfig.PLAYER_W:
             screen_x = Gameconfig.WINDOW_W - Gameconfig.PLAYER_W
         window.blit(self.image, (screen_x, self.rect.y))
-        pygame.draw.rect(window, (255, 0, 0),(screen_x, self.rect.y, self.rect.width, self.rect.height), 2)
+        # pygame.draw.rect(window, (255, 0, 0),(screen_x, self.rect.y, self.rect.width, self.rect.height), 2)
 
     
     #Récupérer le prochain état du joueur
