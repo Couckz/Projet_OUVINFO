@@ -40,7 +40,6 @@ def gameloop(window):
             game_state.advance_state(next_move)
             game_state.collision()
             game_state.collision_cle()
-            game_state.ending()
             game_state.draw(window)
             if game_state.state == "playing":
                 if game_state.fin_jeu():

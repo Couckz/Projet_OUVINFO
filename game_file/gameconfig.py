@@ -38,6 +38,7 @@ class Gameconfig:
     PRINCE_H = 64
     PRINCE_IMG = None 
     
+    
     def init():
         pygame.font.init()
         Gameconfig.BACKGROUND_LEVEL1 = pygame.image.load("../img_file/niv.png")

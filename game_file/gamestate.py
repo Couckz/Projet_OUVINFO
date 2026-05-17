@@ -68,8 +68,15 @@ class Gamestate:
         if self.bg.counter_niveau == 3:
             for platform in self.platforms.platforms_niv4:
                 pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 2)
+            
+            
 
+       
+        
                 
+        
+    
+        
             
     def collision(self):
         if self.bg.counter_niveau == 0:
@@ -228,7 +235,7 @@ class Gamestate:
             if self.bg.start_click >= 1:
                 self.player = Player(80)
                 self.cle = Cle() 
-                self.bg.counter_niveau = 3 ##A mettre à 3 pour se rendre directement à la scène du prince
+                self.bg.counter_niveau = 0 ##A mettre à 3 pour se rendre directement à la scène du prince
                 self.bg.counter = 0
                 self.bg.start = 0
                 self.cle.counter_clelevel = 0
@@ -236,10 +243,10 @@ class Gamestate:
                 self.bg.click = 0
             pygame.draw.rect(window, (0, 0, 255), (self.bg.rectbutton[1].x, self.bg.rectbutton[1].y, self.bg.rectbutton[1].width, self.bg.rectbutton[1].height), 2)
     
-    def ending(self):
-        if self.bg.counter_niveau == 3:
-            rect_prince = self.bg.rectporte[3]
-            if self.player.rect.colliderect(rect_prince):
-                self.bg.counter_niveau+=1
+    # def ending(self):
+    #     if self.bg.counter_niveau == 3:
+    #         rect_prince = self.bg.rectporte[3]
+    #         if self.player.rect.colliderect(rect_prince):
+    #             self.bg.counter_niveau+=1
     
 
