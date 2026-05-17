@@ -33,10 +33,7 @@ class Gamestate:
         print(self.seuil)
         if self.bg.counter_niveau < 3:
             self.seuil = max(self.seuil+Gameconfig.D_SEUIL, Gameconfig.seuil_max)
-            print("counteur", self.bg.counter_niveau)
-            print("position joueur", self.player.rect.x)
         else:
-            print("counteur", self.bg.counter_niveau)
             self.seuil = 0
     
     def draw(self, window):
@@ -46,9 +43,7 @@ class Gamestate:
         
         pygame.draw.rect(window, (0, 255, 0), (self.bg.rectcle.x, self.bg.rectcle.y, self.bg.rectcle.width, self.bg.rectcle.height), 2) #debogage interface
         pygame.draw.rect(window, (0, 0, 255), (self.bg.rectporte[self.bg.counter_niveau].x + self.seuil, self.bg.rectporte[self.bg.counter_niveau].y, self.bg.rectporte[self.bg.counter_niveau].width, self.bg.rectporte[self.bg.counter_niveau].height), 2) #debogage interface
-        #pygame.draw.rect(window, (0, 255, 0), (self.bg.rectvie.x, self.bg.rectvie.y,  self.bg.rectvie.width, self.bg.rectvie.height), 2)
-        #print("window", self.seuil)
-        #print("position x", self.player.rect.x)
+        
         
         #Debogage, niveau 1
         if self.bg.counter_niveau == 0:
@@ -75,40 +70,9 @@ class Gamestate:
             for platform in self.platforms.platforms_niv4:
                 pygame.draw.rect(window, (255, 0, 0), (platform.x + self.seuil, platform.y, platform.width, platform.height), 2)
 
-        # if self.bg.counter_niveau == 3 :
-        #    window.blit(self.bg.image[8], (0, 0))
-        #    self.prince.draw(window, self.seuil)
-
-        #    if self.player.rect.colliderect(self.prince.rect) :
-        #     self.fin_atteinte = True 
-        #     self.bg.counter_niveau = 4
-
-        # if self.bg.counter_niveau == 4 :
-        #     self.prince.draw(window, self.seuil)
-        #     if self.fin_atteinte :
-        #         self.dessiner_fin(window)
                 
-        
-    # def move_ennemi(self):
-    #     if self.bg.counter_niveau == 0:
-    #         print(self.bg.counter_niveau)
-    #         seuil_bas = 450
-    #         seuil_haut = 600
-    #         seuil_b = seuil_bas
-    #         seuil_h = seuil_haut
-    #         for positions in self.ennemi.position_level1:
-    #             seuil_bas = positions.x - 20
-    #             seuil_haut = positions.x + 20
-    #             if positions.x <= seuil_h:
-    #                 positions.x = positions.x+5
-    #             elif min(positions.x, seuil_bas) != positions.x :
-    #                     positions.x = positions.x-5
-        
             
     def collision(self):
-        #self.player.on_ground = False
-        print("on_ground:", self.player.on_ground)
-        print("level:", self.bg.counter_niveau)
         if self.bg.counter_niveau == 0:
                 platforms = self.platforms.platforms_niv1
                 self.player.rect.x += self.player.vx * Gameconfig.DT
@@ -226,9 +190,6 @@ class Gamestate:
     
     def changement_niveau(self):
         self.state = "transition"
-        #self.player = Player(50)
-        # self.bg.counter_niveau += 1
-        # self.cle.counter_clelevel += 1
         time.sleep(0.001)
         Gameconfig.GRAVITY = 0
         self.player = Player(80)
@@ -244,7 +205,7 @@ class Gamestate:
         if self.bg.counter_niveau < 3:
                 if self.player.rect.x + self.seuil < 0:
                     return True
-            # if -self.seuil >= self.player.rect.x:
+            
             
     
     def ecran_fin_jeu(self, window):
