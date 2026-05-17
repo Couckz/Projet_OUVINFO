@@ -33,6 +33,7 @@ def gameloop(window):
             game_state.draw(window)
             game_state.collision()
             game_state.collision_cle()
+            game_state.ending()
             if game_state.fin_jeu():
                 game_state.ecran_fin_jeu(window)
                 #quitting = True

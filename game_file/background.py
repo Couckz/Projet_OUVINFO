@@ -15,12 +15,15 @@ class BG (pygame.sprite.Sprite):
                     pygame.image.load("../img_file/skin2.png").convert(),
                     pygame.image.load("../img_file/jeu.png").convert(), 
                     pygame.image.load("../img_file/final.png").convert_alpha(),
-                    pygame.image.load("../img_file/level_findejeu.png").convert()]
+                    pygame.image.load("../img_file/level_findejeu.png").convert(),
+                    pygame.image.load("../img_file/image_fin.png").convert(),
+                    pygame.image.load("../img_file/bouton_fin.png").convert()]
         self.click = 0
         self.start_click = 0
         self.rectbutton = [
             pygame.Rect(200, 180, 250, 70),
-            pygame.Rect(225, 160, 220, 80)
+            pygame.Rect(225, 160, 220, 80),
+            pygame.Rect(215,160,240,100)
         ]
         self.counter = 0 #Variable qui sert pour l'affichage du compteur des clés
         
@@ -68,6 +71,9 @@ class BG (pygame.sprite.Sprite):
         #Niveau avec le prince
         if self.counter_niveau == 3:
             window.blit(self.image[8], (seuil, 0))
+        
+        if self.counter_niveau == 4 :
+            window.blit(self.image[9], (seuil, 0))
         
         #Dessiner le compteur des clés
         if self.counter_niveau < 3:
