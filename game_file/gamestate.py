@@ -102,14 +102,14 @@ class Gamestate:
                 self.player.rect.y += self.player.vy * Gameconfig.DT
                 self.player.on_ground = False
                 for platforme in platforms:
-                    if self.player.rect.colliderect(platforme):
-                        if self.player.vy > 0:
-                            self.player.rect.bottom = platforme.top
-                            self.player.vy = 0
-                            self.player.on_ground = True
-                        elif self.player.vy < 0:
-                            self.player.rect.top = platforme.bottom
-                            self.player.vy = 0
+                        if self.player.rect.colliderect(platforme):
+                            if self.player.vy > 0:
+                                self.player.rect.bottom = platforme.top
+                                self.player.vy = 0
+                                self.player.on_ground = True
+                            elif self.player.vy < 0:
+                                self.player.rect.top = platforme.bottom
+                                self.player.vy = 0
                             
         if self.bg.counter_niveau == 2:
                 platforms = self.platforms.platforms_niv3

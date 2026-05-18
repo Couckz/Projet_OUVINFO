@@ -53,7 +53,7 @@ def gameloop(window):
     
 if __name__ == "__main__":
     pygame.init()
-    window = pygame.display.set_mode((Gameconfig.LONGUEUR_LEVEL1, Gameconfig.LARGEUR_LEVEL1))
+    window = pygame.display.set_mode((Gameconfig.LONGUEUR_LEVEL1, Gameconfig.LARGEUR_LEVEL1),pygame.SCALED | pygame.RESIZABLE)
     pygame.display.set_caption("monjeu")
     Gameconfig.init()
     Player.init_sprites()
