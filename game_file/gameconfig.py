@@ -41,10 +41,10 @@ class Gameconfig:
     
     def init():
         pygame.font.init()
-        Gameconfig.BACKGROUND_LEVEL1 = pygame.image.load("../img_file/niv.png")
-        Gameconfig.BACKGROUND_LEVEL2 = pygame.image.load("../img_file/level2.jpg")
-        Gameconfig.BACKGROUND_LEVEL3 = pygame.image.load("../img_file/level3.jpeg")
-        Gameconfig.FIN_BACKGROUND = pygame.image.load("../img_file/level_findejeu.png")
+        #Gameconfig.BACKGROUND_LEVEL1 = pygame.image.load("../img_file/niv.png")
+        #Gameconfig.BACKGROUND_LEVEL2 = pygame.image.load("../img_file/level2.jpg")
+        #Gameconfig.BACKGROUND_LEVEL3 = pygame.image.load("../img_file/level3.jpeg")
+        #Gameconfig.FIN_BACKGROUND = pygame.image.load("../img_file/level_findejeu.png")
         
         
         #Pour le player
