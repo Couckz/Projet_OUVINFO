@@ -19,7 +19,8 @@ class BG (pygame.sprite.Sprite):
                     pygame.image.load("../img_file/level_findejeu.png").convert(),
                     pygame.image.load("../img_file/image_fin.png").convert(),
                     pygame.image.load("../img_file/bouton_fin4.png").convert(),
-                    pygame.image.load("../img_file/final2.png").convert()]
+                    pygame.image.load("../img_file/final2.png").convert(),
+                    pygame.image.load("../img_file/bouton_fin_survol.png").convert()]
         self.click = 0
         self.start_click = 0
         self.rectbutton = [
@@ -45,11 +46,7 @@ class BG (pygame.sprite.Sprite):
         self.start = 0
         self.vie = 3
         self.rectvie = pygame.Rect(240, 10, 250, 60)
-        self.imgvie = [
-            pygame.image.load("../img_file/full.png"),
-            pygame.image.load("../img_file/demi.png"),
-            pygame.image.load("../img_file/low.png")
-        ]
+        
         
         self.image_prince = pygame.image.load("../img_file/prince2.png")
         

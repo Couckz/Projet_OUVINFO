@@ -205,7 +205,7 @@ class Gamestate:
     def ecran_fin_jeu(self, window):
         self.bg.draw_end(window)
         #Debug NE PAS TOUCHER
-        pygame.draw.rect(window, (0, 0, 255), (self.bg.rectbutton[0].x, self.bg.rectbutton[0].y, self.bg.rectbutton[0].width, self.bg.rectbutton[0].height), 2)
+        #pygame.draw.rect(window, (0, 0, 255), (self.bg.rectbutton[0].x, self.bg.rectbutton[0].y, self.bg.rectbutton[0].width, self.bg.rectbutton[0].height), 2)
         if self.bg.click >= 1:
             self.state = "playing" 
             self.player = Player(80)
@@ -242,6 +242,9 @@ class Gamestate:
         self.souris = pygame.mouse.get_pos()
         window.blit(self.bg.image[9], (0,0))
         window.blit(self.bg.image[10], (self.bg.rectbutton[1].x, self.bg.rectbutton[1].y))
+        #pygame.draw.rect(window, (0, 0, 255), (self.bg.rectbutton[1].x, self.bg.rectbutton[1].y, self.bg.rectbutton[1].width, self.bg.rectbutton[1].height), 2)
+        if self.bg.rectbutton[0].collidepoint(self.souris):
+                window.blit(self.bg.image[12], (self.bg.rectbutton[1].x, self.bg.rectbutton[1].y))
         #pygame.draw.rect(window, (0, 0, 255), (self.bg.rectbutton[1].x, self.bg.rectbutton[1].y, self.bg.rectbutton[1].width, self.bg.rectbutton[1].height), 2)
         if pygame.mouse.get_pressed()[0]:  
                 if self.bg.rectbutton[1].collidepoint(pygame.mouse.get_pos()):
