@@ -18,7 +18,8 @@ class BG (pygame.sprite.Sprite):
                     pygame.image.load("../img_file/final.png").convert_alpha(),
                     pygame.image.load("../img_file/level_findejeu.png").convert(),
                     pygame.image.load("../img_file/image_fin.png").convert(),
-                    pygame.image.load("../img_file/bouton_fin4.png").convert()]
+                    pygame.image.load("../img_file/bouton_fin4.png").convert(),
+                    pygame.image.load("../img_file/final2.png").convert()]
         self.click = 0
         self.start_click = 0
         self.rectbutton = [
@@ -101,7 +102,7 @@ class BG (pygame.sprite.Sprite):
         window.blit(self.image[6], (0,0))
         window.blit(self.image[7], (self.rectbutton[1].x, self.rectbutton[1].y))
         if self.rectbutton[0].collidepoint(self.souris):
-                window.blit(self.image[7], (self.rectbutton[1].x, self.rectbutton[1].y))
+                window.blit(self.image[11], (self.rectbutton[1].x, self.rectbutton[1].y))
                 if pygame.mouse.get_pressed()[0]:  
                     if self.rectbutton[0].collidepoint(pygame.mouse.get_pos()):
                         self.start_click +=1
