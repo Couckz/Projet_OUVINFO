@@ -91,9 +91,9 @@ class BG (pygame.sprite.Sprite):
     def draw_end(self, window):
         self.souris = pygame.mouse.get_pos()
         window.blit(self.image[3], (0,0))
-        window.blit(self.image[10], (self.rectbutton[0].x, self.rectbutton[0].y))
+        window.blit(self.image[4], (self.rectbutton[0].x, self.rectbutton[0].y))
         if self.rectbutton[0].collidepoint(self.souris):
-                window.blit(self.image[12], (self.rectbutton[0].x, self.rectbutton[0].y))
+                window.blit(self.image[5], (self.rectbutton[0].x, self.rectbutton[0].y))
                 if pygame.mouse.get_pressed()[0]:  
                     if self.rectbutton[0].collidepoint(pygame.mouse.get_pos()):
                         self.click+=1
