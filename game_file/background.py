@@ -46,11 +46,7 @@ class BG (pygame.sprite.Sprite):
         self.start = 0
         self.vie = 3
         self.rectvie = pygame.Rect(240, 10, 250, 60)
-        self.imgvie = [
-            pygame.image.load("../img_file/full.png"),
-            pygame.image.load("../img_file/demi.png"),
-            pygame.image.load("../img_file/low.png")
-        ]
+        
         
         self.image_prince = pygame.image.load("../img_file/prince2.png")
         
