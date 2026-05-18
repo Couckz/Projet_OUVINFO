@@ -19,7 +19,8 @@ class BG (pygame.sprite.Sprite):
                     pygame.image.load("../img_file/level_findejeu.png").convert(),
                     pygame.image.load("../img_file/image_fin.png").convert(),
                     pygame.image.load("../img_file/bouton_fin4.png").convert(),
-                    pygame.image.load("../img_file/final2.png").convert()]
+                    pygame.image.load("../img_file/final2.png").convert(),
+                    pygame.image.load("../img_file/bouton_fin_survol.png").convert()]
         self.click = 0
         self.start_click = 0
         self.rectbutton = [
@@ -90,9 +91,9 @@ class BG (pygame.sprite.Sprite):
     def draw_end(self, window):
         self.souris = pygame.mouse.get_pos()
         window.blit(self.image[3], (0,0))
-        window.blit(self.image[4], (self.rectbutton[0].x, self.rectbutton[0].y))
+        window.blit(self.image[10], (self.rectbutton[0].x, self.rectbutton[0].y))
         if self.rectbutton[0].collidepoint(self.souris):
-                window.blit(self.image[5], (self.rectbutton[0].x, self.rectbutton[0].y))
+                window.blit(self.image[12], (self.rectbutton[0].x, self.rectbutton[0].y))
                 if pygame.mouse.get_pressed()[0]:  
                     if self.rectbutton[0].collidepoint(pygame.mouse.get_pos()):
                         self.click+=1
