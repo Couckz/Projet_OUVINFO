@@ -30,7 +30,7 @@ class Gameconfig:
     WALK_RIGHT_MASKS = [] 
     WALK_LEFT_MASKS = []
     NB_FRAMES_PER_SPRITE_PLAYER = 5
-    D_SEUIL = -2
+    D_SEUIL = -2 #-2
     seuil_max = -1800
 
     FIN_BACKGROUND = None

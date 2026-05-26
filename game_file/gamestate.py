@@ -90,6 +90,7 @@ class Gamestate:
                             self.player.vy = 0
             
         if self.bg.counter_niveau == 1:
+                Gameconfig.D_SEUIL = -2.05
                 platforms = self.platforms.platforms_niv2
                 self.player.rect.x += self.player.vx * Gameconfig.DT
                 for platforme in platforms:
@@ -112,6 +113,7 @@ class Gamestate:
                                 self.player.vy = 0
                             
         if self.bg.counter_niveau == 2:
+                Gameconfig.D_SEUIL = -2.6
                 platforms = self.platforms.platforms_niv3
                 self.player.rect.x += self.player.vx * Gameconfig.DT
                 for platforme in platforms:
@@ -257,6 +259,7 @@ class Gamestate:
                     self.seuil = 0
                     self.bg.click = 0
                     self.bg.start_click = 0
+                    
                     
     
 
